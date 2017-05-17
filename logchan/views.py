@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .models import Greeting
+from .models import Post
 
 def index(request):
     return HttpResponse("This is the smallest imageboard ever made")
