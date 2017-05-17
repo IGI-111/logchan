@@ -15,4 +15,3 @@ def db(request):
     boards = Board.objects.all()
 
     return render(request, 'db.html', {'boards': boards})
-
