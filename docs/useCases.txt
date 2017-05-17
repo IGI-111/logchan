@@ -11,13 +11,16 @@ Anonymous -> (Select board)
 (Select board) .up-> (Add thread) : extends
 (Select board) .> (Select thread) : extends
 
-(Select thread) .> (New post) : extends
-(Select thread) .down-> (Delete post) : extends
+(Select thread) .up-> (Add post) : extends
+(Select thread) .> (Delete post) : extends
 
 Moderator -> (Delete thread)
+(Delete thread) .down-> (Authentification) : include
 
 Administrator -> (Add board)
+(Add board) .up-> (Authentification) : include
 Administrator -down-> (Delete board)
+(Delete board) .> (Authentification) : include
 
 @enduml
 
