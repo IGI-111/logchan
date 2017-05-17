@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<ul>
+    {% for thread in threads %}
+        <li><a href="thread/{{thread.id}}">{{ thread.subject }}</a></li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
