@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .models import Post
+from .models import Board
 
 def index(request):
     return HttpResponse("This is the smallest imageboard ever made")
@@ -9,10 +9,10 @@ def index(request):
 
 def db(request):
 
-    post = Post()
-    post.save()
+    board = Board()
+    board.save()
 
-    posts = Post.objects.all()
+    boards = Board.objects.all()
 
-    return render(request, 'db.html', {'posts': posts})
+    return render(request, 'db.html', {'boards': boards})
 
