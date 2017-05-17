@@ -1,0 +1,23 @@
+@startuml
+
+:Administrator:
+:Moderator:
+:Anonymous:
+
+Moderator <|-- Administrator
+Anonymous <|-- Moderator
+
+Anonymous -> (Select board)
+(Select board) .up-> (Add thread) : extends
+(Select board) .> (Select thread) : extends
+
+(Select thread) .> (New post) : extends
+(Select thread) .down-> (Delete post) : extends
+
+Moderator -> (Delete thread)
+
+Administrator -> (Add board)
+Administrator -down-> (Delete board)
+
+@enduml
+
