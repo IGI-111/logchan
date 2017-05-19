@@ -1,17 +1,19 @@
 from django.conf.urls import url, include
 from .models import Board, Thread
 from rest_framework import routers, serializers, viewsets
+from django.shortcuts import get_object_or_404
+from rest_framework.response import Response
 
 # Serializers define the API representation.
 class BoardSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Board
-        fields = "__all__"
+        fields = ["name"]
 
 class ThreadSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Thread
-        fields = "__all__"
+        fields = ["board", "subject"]
 
 # ViewSets define the view behavior.
 class BoardViewSet(viewsets.ModelViewSet):
