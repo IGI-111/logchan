@@ -1,9 +1,9 @@
 from django.test import TestCase
 from rest_framework.test import APIClient
 from rest_framework import status
+from datetime import datetime
 
 from logchan.models import Board, Thread, Post
-from datetime import datetime
 
 class RestApiTestBoard(TestCase):
     def test_board_post(self):
@@ -59,7 +59,7 @@ class RestApiTestThread(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data, { 'subject': self.dumThread.subject })
 
-    def test_board_put(self):
+    def test_thread_put(self):
         client = APIClient()
         url = '/api/boards/{}/{}/'.format(self.dumBoard.name, self.dumThread.subject)
         newName = 'new'
@@ -75,20 +75,27 @@ class RestApiTestPost(TestCase):
         self.dumThread = Thread(board=self.dumBoard, subject='TestThread')
         self.dumThread.save()
         self.dumPost = Post(thread=self.dumThread, date=datetime.now(), user_name='testUser',
-            deletion_password='hdfkhnl', message='Test message')
+            deletion_password='hdfkhnlf', message='Test message')
         self.dumPost.save()
 
     def test_message_post(self):
-        # TODO
-        self.assertEquals(True, False)
         client = APIClient()
-        threadName = 'Test thread'
-        request = client.post('/api/boards/{}/'.format(self.dumBoard.name), {'subject': threadName}, format='json')
-        self.assertEqual(request.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(Thread.objects.get(board=self.dumBoard.name, subject=threadName).subject, threadName)
+        data = {
+            'message': 'test message',
+            'date': datetime.now(),
+            'user_name': 'user',
+            'deletion_password': 'jsdfhbd',
+        }
+        post = Post(thread=self.dumThread, date=data['date'], user_name=data['user_name'],
+            deletion_password=data['deletion_password'], message=data['message'])
 
-    def test_thread_get(self):
-        # TODO
+        postMessage = 'Test post'
+        request = client.post('/api/boards/{}/{}/'.format(self.dumBoard.name, 
+            self.dumThread.subject), data, format='json')
+        self.assertEqual(request.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(thread_contain_post(self.thread, post), True)
+
+    def test_message_get(self):
         self.assertEquals(True, False)
         client = APIClient()
         url = '/api/boards/{}/{}/'.format(testBoard, testThread)
@@ -96,7 +103,7 @@ class RestApiTestPost(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data, { 'subject': testThread })
 
-    def test_board_put(self):
+    def test_message_put(self):
         # TODO
         self.assertEquals(True, False)
         client = APIClient()
@@ -106,6 +113,14 @@ class RestApiTestPost(TestCase):
         self.assertEqual(request.status_code, status.HTTP_200_OK)
         t = Thread.objects.get(board=testBoard, subject=threadName)
         self.assertEqual(newName, t.subject)
+
+    def thread_contain_post(thread, post):
+        posts = Post.objects.get(thread=threadName)
+        for p in posts:
+            if(p.message == post.message and p.date == post.date 
+                and p.user_name == post.user_name):
+                return True
+        return False
 
 ## Test view
 # https://github.com/erkarl/django-rest-framework-oauth2-provider-example/blob/master/apps/users/tests.py
