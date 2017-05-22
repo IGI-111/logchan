@@ -12,53 +12,69 @@ class RestApiTestPost(TestCase):
         self.dumBoard.save()
         self.dumThread = Thread(board=self.dumBoard, subject='TestThread')
         self.dumThread.save()
-        self.dumPost = Post(thread=self.dumThread, date=datetime.now(), user_name='testUser',
+        self.dumPost = Post(thread=self.dumThread, user_name='testUser',
             deletion_password='hdfkhnlf', message='Test message')
         self.dumPost.save()
 
     def test_message_post(self):
         client = APIClient()
+        threadUrl = '/api/thread/{}/'.format(self.dumThread.id)
         data = {
+            'thread': threadUrl,
             'message': 'test message',
-            'date': datetime.now(),
             'user_name': 'user',
             'deletion_password': 'jsdfhbd',
         }
-        post = Post(thread=self.dumThread, date=data['date'], user_name=data['user_name'],
-            deletion_password=data['deletion_password'], message=data['message'])
 
         postMessage = 'Test post'
-        request = client.post('/api/board/{}/{}/'.format(self.dumBoard.name, 
-            self.dumThread.subject), data, format='json')
+        request = client.post('/api/post/', data, format='json')
+
         self.assertEqual(request.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(thread_contain_post(self.thread, post), True)
 
     def test_message_get(self):
-        self.assertEquals(True, False)
         client = APIClient()
-        url = '/api/board/{}/{}/'.format(testBoard, testThread)
+        url = '/api/post/{}/'.format(self.dumPost.id)
         response = client.get(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data, { 'subject': testThread })
 
-    def test_message_put(self):
-        # TODO
-        self.assertEquals(True, False)
+    def test_message_delete(self):
+        p = Post(thread=self.dumThread, user_name='testUser',
+            deletion_password='hdfkhnlf', message='Test message')
+        p.save()
         client = APIClient()
-        url = '/api/board/{}/{}/'.format(testBoard, testThread)
-        newName = 'new'
-        request = client.put(url, data={'subject': newName}, content_type='json')
-        self.assertEqual(request.status_code, status.HTTP_200_OK)
-        t = Thread.objects.get(board=testBoard, subject=threadName)
-        self.assertEqual(newName, t.subject)
+        url = '/api/thread/{}/post/{}/'.format(self.dumThread.id, p.id)
+        response = client.delete(url, format='json')
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
-    def thread_contain_post(thread, post):
-        posts = Post.objects.get(thread=threadName)
-        for p in posts:
-            if(p.message == post.message and p.date == post.date 
-                and p.user_name == post.user_name):
-                return True
-        return False
+    def test_message_by_thread_post(self):
+        client = APIClient()
+        threadUrl = '/api/thread/{}/'.format(self.dumThread.id)
+        data = {
+            'thread': threadUrl,
+            'message': 'test message',
+            'user_name': 'user',
+            'deletion_password': 'jsdfhbd',
+        }
 
+        postMessage = 'Test post'
+        request = client.post('/api/thread/{}/post/'.format(self.dumThread.id),
+            data, format='json')
+
+        self.assertEqual(request.status_code, status.HTTP_201_CREATED)
+
+    def test_message_by_thread_get(self):
+        client = APIClient()
+        url = '/api/post/{}/'.format(self.dumPost.id)
+        response = client.get(url, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_message_by_thread_delete(self):
+        p = Post(thread=self.dumThread, user_name='testUser',
+            deletion_password='hdfkhnlf', message='Test message')
+        p.save()
+        client = APIClient()
+        url = '/api/thread/{}/post/{}/'.format(self.dumThread.id, p.id)
+        response = client.delete(url, format='json')
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 ## Test view
 # https://github.com/erkarl/django-rest-framework-oauth2-provider-example/blob/master/apps/users/tests.py
