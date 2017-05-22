@@ -6,50 +6,6 @@ from django.core.urlresolvers import reverse
 
 from logchan.models import Board, Thread, Post
 
-class RestApiTestBoard(TestCase):
-    def test_board_post(self):
-        client = APIClient()
-        boardName = 'Test board'
-        request = client.post('/api/board/', {'name': boardName}, format='json')
-        self.assertEqual(request.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(Board.objects.get(name=boardName).name, boardName)
-
-    def test_board_get(self):
-        boardName = 'Test board'
-        b = Board(name=boardName)
-        b.save()
-
-        client = APIClient()
-        url = '/api/board/{}/'.format(b.name)
-        response = client.get(url, format='json')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data, { 'name': boardName })
-
-class RestApiTestThread(TestCase):
-    def setUp(self):
-        self.dumBoard = Board(name='TestBoard')
-        self.dumBoard.save()
-        self.dumThread = Thread(board=self.dumBoard, subject='TestThread')
-        self.dumThread.save()
-
-    def test_thread_post(self):
-        client = APIClient()
-        threadName = 'Test thread'
-        boardUrl = '/api/board/{}/'.format(self.dumBoard.name)
-        print(boardUrl)
-        request = client.post('/api/thread/', {'board': boardUrl, 'subject': threadName}, format='json')
-        self.assertEqual(request.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(Thread.objects.get(board=self.dumBoard.name, subject=threadName).subject, threadName)
-
-    def test_thread_get(self):
-        client = APIClient()
-        url = '/api/thread/{}/'.format(self.dumThread.id)
-        response = client.get(url, format='json')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data['subject'], self.dumThread.subject)
-        self.assertEqual(response.data['id'], self.dumThread.id)
-        self.assertEqual(self.dumThread.board.name in response.data['board'], True)
-
 class RestApiTestPost(TestCase):
     def setUp(self):
         self.dumBoard = Board(name='TestBoard')

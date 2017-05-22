@@ -1,0 +1,21 @@
+@startuml
+class Board {
+    {static} pk_name
+}
+
+class Thread {
+    fk_board
+    subject
+}
+
+class Post {
+    fk_thread
+    date
+    deletion_password
+    image
+    message
+}
+
+Board *-- Thread
+Thread *-- Post
+@enduml
