@@ -2,25 +2,6 @@
 {% load staticfiles %}
 
 {% block content %}
-<form id="postForm" method="POST">
-    <fieldset>
-        <input name="thread" type="hidden" value="{{thread.id}}">
-        <label>
-            Username
-            <input name="user_name" type="text" value="Anonymous">
-        </label>
-        <label>
-            Image
-            <input name="image" type="file">
-        </label>
-        <label>
-            Message
-            <textarea name="message"></textarea>
-        </label>
-        <input type="submit">
-    </fieldset>
-</form>
-
 <ul id="posts">
     {% for post in posts %}
         <li>
@@ -32,6 +13,15 @@
     {% endfor %}
 </ul>
 
+<form id="postForm" method="POST">
+    <fieldset>
+        <input name="thread" type="hidden" value="{{thread.id}}">
+        <textarea name="message"></textarea><br>
+        <input name="user_name" type="text" value="Anonymous"><br>
+        <input name="image" type="file">
+        <input type="submit" value="Submit">
+    </fieldset>
+</form>
 
 <script src="/static/js/thread.js"></script>
 
