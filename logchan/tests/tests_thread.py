@@ -39,12 +39,20 @@ class RestApiTestThread(TestCase):
         response = client.delete(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
+    def test_thread_by_board_delete(self):
+        testThread = Thread(subject='Test tt', board=self.dumBoard)
+        testThread.save()
+        client = APIClient()
+
+        url = '/api/board/{}/thread/{}/'.format(self.dumBoard.name, testThread.id)
+        response = client.delete(url, format='json')
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
     def test_thread_by_board_post(self):
         client = APIClient()
-        threadName = 'Test thread'
+        threadName = 'Test thread by board'
         boardUrl = '/api/board/{}/'.format(self.dumBoard.name)
-        print(boardUrl)
-        request = client.post('{}/thread/'.format(boardUrl), {'board': boardUrl, 'subject': threadName}, format='json')
+        request = client.post('{}thread/'.format(boardUrl), {'board': boardUrl, 'subject': threadName}, format='json')
         self.assertEqual(request.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Thread.objects.get(board=self.dumBoard.name, subject=threadName).subject, threadName)
 
