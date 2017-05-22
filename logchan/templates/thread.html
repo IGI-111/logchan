@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<form action="/api/post/" method="POST" enctype="multipart/form-data" class="form-horizontal" novalidate="">
+    <fieldset>
+        <input name="thread" type="hidden" value="{{thread.id}}">
+        <label>
+            Username
+            <input name="user_name" type="text">
+        </label>
+        <label>
+            Image
+            <input name="image" type="file">
+        </label>
+        <label>
+            Message
+            <textarea name="message"></textarea>
+        </label>
+        <input type="submit">
+    </fieldset>
+</form>
+
+<ul>
+    {% for post in posts %}
+        {% if post.image %}
+        <img src="{{MEDIA_URL}}{{post.image.url}}" alt="{{post.id}}"/>
+        {% endif %}
+        <p>{{ post.message }}</p>
+    {% endfor %}
+</ul>
+
+{% endblock %}

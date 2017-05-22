@@ -5,7 +5,9 @@
 
 <ul>
     {% for thread in threads %}
-        <li><a href="thread/{{thread.id}}">{{ thread.subject }}</a></li>
+        <li>
+            <a href="thread/{{thread.id}}">{{ thread.subject }}</a>
+        </li>
     {% endfor %}
 </ul>
 
