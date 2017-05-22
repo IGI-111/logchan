@@ -1,5 +1,8 @@
 @startuml
 
+skinparam packageStyle rectangle
+left to right direction
+
 :Administrator:
 :Moderator:
 :Anonymous:
@@ -14,13 +17,10 @@ Anonymous -> (Select board)
 (Select thread) .up-> (Add post) : extends
 (Select thread) .> (Delete post) : extends
 
-Moderator -> (Delete thread)
-(Delete thread) .down-> (Authentification) : include
-
-Administrator -> (Add board)
-(Add board) .up-> (Authentification) : include
-Administrator -down-> (Delete board)
-(Delete board) .> (Authentification) : include
-
+rectangle Authenticated {
+    Moderator -> (Delete thread)
+    Administrator -> (Add board)
+    Administrator -> (Delete board)
+}
 @enduml
 
