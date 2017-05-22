@@ -2,6 +2,7 @@ from django.test import TestCase
 from rest_framework.test import APIClient
 from rest_framework import status
 from datetime import datetime
+from django.core.urlresolvers import reverse
 
 from logchan.models import Board, Thread, Post
 
@@ -24,20 +25,6 @@ class RestApiTestBoard(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data, { 'name': boardName })
 
-    def test_board_put(self):
-        boardName = 'Test board'
-        b = Board(name=boardName)
-        b.save()
-
-        client = APIClient()
-        url = '/api/board/{}/'.format(b.name)
-        boardName = 'bant'
-        request = client.put(url, data={'name': boardName}, content_type='json')
-        self.assertEqual(request.status_code, status.HTTP_200_OK)
-
-        b = Board.objects.get(name=boardName)
-        self.assertEqual(boardName, b.name)
-
 class RestApiTestThread(TestCase):
     def setUp(self):
         self.dumBoard = Board(name='TestBoard')
@@ -48,25 +35,20 @@ class RestApiTestThread(TestCase):
     def test_thread_post(self):
         client = APIClient()
         threadName = 'Test thread'
-        request = client.post('/api/board/{}/'.format(self.dumBoard.name), {'subject': threadName}, format='json')
+        boardUrl = '/api/board/{}/'.format(self.dumBoard.name)
+        print(boardUrl)
+        request = client.post('/api/thread/', {'board': boardUrl, 'subject': threadName}, format='json')
         self.assertEqual(request.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(Thread.objects.get(board=testBoard, subject=threadName).subject, threadName)
+        self.assertEqual(Thread.objects.get(board=self.dumBoard.name, subject=threadName).subject, threadName)
 
     def test_thread_get(self):
         client = APIClient()
-        url = '/api/board/{}/{}/'.format(self.dumBoard.name, self.dumThread.subject)
+        url = '/api/thread/{}/'.format(self.dumThread.id)
         response = client.get(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data, { 'subject': self.dumThread.subject })
-
-    def test_thread_put(self):
-        client = APIClient()
-        url = '/api/board/{}/{}/'.format(self.dumBoard.name, self.dumThread.subject)
-        newName = 'new'
-        request = client.put(url, data={'subject': newName}, content_type='json')
-        self.assertEqual(request.status_code, status.HTTP_200_OK)
-        t = Thread.objects.get(board=self.dumBoard.name, subject=self.dumThread.subject)
-        self.assertEqual(newName, t.subject)
+        self.assertEqual(response.data['subject'], self.dumThread.subject)
+        self.assertEqual(response.data['id'], self.dumThread.id)
+        self.assertEqual(self.dumThread.board.name in response.data['board'], True)
 
 class RestApiTestPost(TestCase):
     def setUp(self):
