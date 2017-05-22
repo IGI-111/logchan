@@ -22,5 +22,5 @@ class Post(models.Model):
     image = models.ImageField(upload_to='images/', null=True, blank=True)
     message = models.TextField()
     def __str__(self):
-        return self.id
+        return self.message
 
