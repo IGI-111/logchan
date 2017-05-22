@@ -5,4 +5,4 @@ def suite():
     if res != 0:
         # Tests have failed no need to continue
         return res
-    return unittest.TestLoader().discover("seltests", pattern="*.py")
+    return unittest.TestLoader().discover("integrationtests", pattern="*.py")
