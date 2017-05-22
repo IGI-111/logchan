@@ -16,10 +16,14 @@
 <form id="postForm" method="POST">
     <fieldset>
         <input name="thread" type="hidden" value="{{thread.id}}">
-        <textarea name="message"></textarea><br>
-        <input name="user_name" type="text" value="Anonymous"><br>
-        <input name="image" type="file">
-        <input type="submit" value="Submit">
+        <textarea name="message"></textarea>
+        <br>
+        <label for="usernameInput">Username:</label>
+        <input id="usernameInput" name="user_name" type="text" value="Anonymous">
+        <br>
+        <label for="imageInput">Image:</label>
+        <input id="imageInput" name="image" type="file">
+        <input type="submit" value="Post">
     </fieldset>
 </form>
 
