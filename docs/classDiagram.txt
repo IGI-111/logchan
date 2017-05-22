@@ -4,18 +4,21 @@ class Board {
 }
 
 class Thread {
+    {static} pk_id
     fk_board
     subject
 }
 
 class Post {
+    {static} pk_id
     fk_thread
     date
+    user_name
     deletion_password
     image
     message
 }
 
-Board *-- Thread
-Thread *-- Post
+Board *-right- Thread
+Thread *-right- Post
 @enduml
