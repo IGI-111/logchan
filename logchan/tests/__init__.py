@@ -1,4 +1,7 @@
 import unittest
 
 def suite():
-    return unittest.TestLoader().discover("tests", pattern="*.py")
+    res = unittest.TestLoader().discover("unittests", pattern="*.py")
+    if res != 0:
+        return res
+    return unittest.TestLoader().discover("seltests", pattern="*.py")
