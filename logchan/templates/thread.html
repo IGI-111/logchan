@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<ul>
+    {% for post in posts %}
+        <img src="{{MEDIA_URL}}{{post.image.url}}" alt="{{post.id}}"/>
+        <p>{{ post.message }}</p>
+    {% endfor %}
+</ul>
+
+{% endblock %}
