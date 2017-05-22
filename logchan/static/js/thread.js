@@ -1,4 +1,4 @@
-const CURRENT_THREAD = parseInt(document.querySelector("#postForm input[name=thread]").getAttribute("value"));
+const CURRENT_THREAD = parseInt(document.querySelector("#postForm input[name=thread]").value);
 
 function sendPostForm(e){
   e.preventDefault();    //stop form from submitting

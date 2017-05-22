@@ -10,11 +10,20 @@ def board(request, board_name):
     boards = Board.objects.all()
     board = Board.objects.get(name=board_name)
     threads = Thread.objects.filter(board=board_name)
-    return render(request, 'catalog.html', {'boards': boards, 'board': board, 'threads':threads})
+    return render(request, 'catalog.html', {
+        'boards': boards,
+        'board': board,
+        'threads':threads
+        })
 
 def thread(request, board_name, thread_id):
     boards = Board.objects.all()
     board = Board.objects.get(name=board_name)
     thread = Thread.objects.get(board=board_name, id=thread_id)
     posts = Post.objects.filter(thread=thread_id)
-    return render(request, 'thread.html', {'boards': boards, 'board': board, 'thread':thread, 'posts':posts})
+    return render(request, 'thread.html', {
+        'boards': boards,
+        'board': board,
+        'thread':thread,
+        'posts':posts
+        })

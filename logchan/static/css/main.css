@@ -30,6 +30,10 @@ header nav li {
     display: inline;
 }
 
+header nav li.currentBoard {
+    font-weight: bold;
+}
+
 header nav a {
     font-style: italic;
     color: inherit;

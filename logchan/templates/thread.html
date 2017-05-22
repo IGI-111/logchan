@@ -15,6 +15,7 @@
 
 <form id="postForm" method="POST">
     <fieldset>
+        {% csrf_token %}
         <input name="thread" type="hidden" value="{{thread.id}}">
         <textarea name="message"></textarea>
         <br>

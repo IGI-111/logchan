@@ -3,12 +3,32 @@
 
 {% block content %}
 
-<ul>
+<ul id="threads">
     {% for thread in threads %}
         <li>
             <a href="thread/{{thread.id}}">{{ thread.subject }}</a>
         </li>
     {% endfor %}
 </ul>
+
+<form id="threadForm" method="POST">
+    <fieldset>
+        {% csrf_token %}
+        <input name="board" type="hidden" value="{{board.name}}">
+        <textarea name="message"></textarea>
+        <br>
+        <label for="usernameInput">Username:</label>
+        <input id="usernameInput" name="user_name" type="text" value="Anonymous">
+        <br>
+        <label for="subjectInput">Subject:</label>
+        <input id="subjectInput" name="subject" type="text">
+        <br>
+        <label for="imageInput">Image:</label>
+        <input id="imageInput" name="image" type="file">
+        <input type="submit" value="Post">
+    </fieldset>
+</form>
+
+<script src="/static/js/board.js"></script>
 
 {% endblock %}
