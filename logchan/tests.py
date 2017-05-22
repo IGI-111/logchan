@@ -9,7 +9,7 @@ class RestApiTestBoard(TestCase):
     def test_board_post(self):
         client = APIClient()
         boardName = 'Test board'
-        request = client.post('/api/boards/', {'name': boardName}, format='json')
+        request = client.post('/api/board/', {'name': boardName}, format='json')
         self.assertEqual(request.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Board.objects.get(name=boardName).name, boardName)
 
@@ -19,7 +19,7 @@ class RestApiTestBoard(TestCase):
         b.save()
 
         client = APIClient()
-        url = '/api/boards/{}/'.format(b.name)
+        url = '/api/board/{}/'.format(b.name)
         response = client.get(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data, { 'name': boardName })
@@ -30,7 +30,7 @@ class RestApiTestBoard(TestCase):
         b.save()
 
         client = APIClient()
-        url = '/api/boards/{}/'.format(b.name)
+        url = '/api/board/{}/'.format(b.name)
         boardName = 'bant'
         request = client.put(url, data={'name': boardName}, content_type='json')
         self.assertEqual(request.status_code, status.HTTP_200_OK)
@@ -48,20 +48,20 @@ class RestApiTestThread(TestCase):
     def test_thread_post(self):
         client = APIClient()
         threadName = 'Test thread'
-        request = client.post('/api/boards/{}/'.format(self.dumBoard.name), {'subject': threadName}, format='json')
+        request = client.post('/api/board/{}/'.format(self.dumBoard.name), {'subject': threadName}, format='json')
         self.assertEqual(request.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Thread.objects.get(board=testBoard, subject=threadName).subject, threadName)
 
     def test_thread_get(self):
         client = APIClient()
-        url = '/api/boards/{}/{}/'.format(self.dumBoard.name, self.dumThread.subject)
+        url = '/api/board/{}/{}/'.format(self.dumBoard.name, self.dumThread.subject)
         response = client.get(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data, { 'subject': self.dumThread.subject })
 
     def test_thread_put(self):
         client = APIClient()
-        url = '/api/boards/{}/{}/'.format(self.dumBoard.name, self.dumThread.subject)
+        url = '/api/board/{}/{}/'.format(self.dumBoard.name, self.dumThread.subject)
         newName = 'new'
         request = client.put(url, data={'subject': newName}, content_type='json')
         self.assertEqual(request.status_code, status.HTTP_200_OK)
@@ -90,7 +90,7 @@ class RestApiTestPost(TestCase):
             deletion_password=data['deletion_password'], message=data['message'])
 
         postMessage = 'Test post'
-        request = client.post('/api/boards/{}/{}/'.format(self.dumBoard.name, 
+        request = client.post('/api/board/{}/{}/'.format(self.dumBoard.name, 
             self.dumThread.subject), data, format='json')
         self.assertEqual(request.status_code, status.HTTP_201_CREATED)
         self.assertEqual(thread_contain_post(self.thread, post), True)
@@ -98,7 +98,7 @@ class RestApiTestPost(TestCase):
     def test_message_get(self):
         self.assertEquals(True, False)
         client = APIClient()
-        url = '/api/boards/{}/{}/'.format(testBoard, testThread)
+        url = '/api/board/{}/{}/'.format(testBoard, testThread)
         response = client.get(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data, { 'subject': testThread })
@@ -107,7 +107,7 @@ class RestApiTestPost(TestCase):
         # TODO
         self.assertEquals(True, False)
         client = APIClient()
-        url = '/api/boards/{}/{}/'.format(testBoard, testThread)
+        url = '/api/board/{}/{}/'.format(testBoard, testThread)
         newName = 'new'
         request = client.put(url, data={'subject': newName}, content_type='json')
         self.assertEqual(request.status_code, status.HTTP_200_OK)

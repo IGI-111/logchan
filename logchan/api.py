@@ -13,7 +13,7 @@ class BoardSerializer(serializers.HyperlinkedModelSerializer):
 class ThreadSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Thread
-        fields = ["board", "subject"]
+        fields = ["id", "board", "subject"]
 
 # ViewSets define the view behavior.
 class BoardViewSet(viewsets.ModelViewSet):
@@ -26,8 +26,8 @@ class ThreadViewSet(viewsets.ModelViewSet):
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
-router.register(r'boards', BoardViewSet)
-router.register(r'threads', ThreadViewSet)
+router.register(r'board', BoardViewSet)
+router.register(r'thread', ThreadViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
