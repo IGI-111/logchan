@@ -18,9 +18,8 @@ class RestApiTestPost(TestCase):
 
     def test_message_post(self):
         client = APIClient()
-        threadUrl = '/api/thread/{}/'.format(self.dumThread.id)
         data = {
-            'thread': threadUrl,
+            'thread': self.dumThread.id,
             'message': 'test message',
             'user_name': 'user',
             'deletion_password': 'jsdfhbd',
@@ -48,9 +47,8 @@ class RestApiTestPost(TestCase):
 
     def test_message_by_thread_post(self):
         client = APIClient()
-        threadUrl = '/api/thread/{}/'.format(self.dumThread.id)
         data = {
-            'thread': threadUrl,
+            'thread': self.dumThread.id,
             'message': 'test message',
             'user_name': 'user',
             'deletion_password': 'jsdfhbd',

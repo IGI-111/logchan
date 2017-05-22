@@ -16,10 +16,11 @@ class RestApiTestThread(TestCase):
     def test_thread_post(self):
         client = APIClient()
         threadName = 'Test thread'
-        boardUrl = '/api/board/{}/'.format(self.dumBoard.name)
-        request = client.post('/api/thread/', {'board': boardUrl, 'subject': threadName}, format='json')
+        request = client.post('/api/thread/', {'board': self.dumBoard.name, 
+            'subject': threadName}, format='json')
         self.assertEqual(request.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(Thread.objects.get(board=self.dumBoard.name, subject=threadName).subject, threadName)
+        self.assertEqual(Thread.objects.get(board=self.dumBoard.name, 
+            subject=threadName).subject, threadName)
 
     def test_thread_get(self):
         client = APIClient()
@@ -52,9 +53,11 @@ class RestApiTestThread(TestCase):
         client = APIClient()
         threadName = 'Test thread by board'
         boardUrl = '/api/board/{}/'.format(self.dumBoard.name)
-        request = client.post('{}thread/'.format(boardUrl), {'board': boardUrl, 'subject': threadName}, format='json')
+        request = client.post('{}thread/'.format(boardUrl), 
+            {'board': self.dumBoard.name, 'subject': threadName}, format='json')
         self.assertEqual(request.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(Thread.objects.get(board=self.dumBoard.name, subject=threadName).subject, threadName)
+        self.assertEqual(Thread.objects.get(board=self.dumBoard.name, 
+            subject=threadName).subject, threadName)
 
     def test_thread_by_board_get(self):
         client = APIClient()
