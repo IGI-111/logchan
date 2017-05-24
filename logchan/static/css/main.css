@@ -62,6 +62,7 @@ h1,h2,h3 {
     }
 }
 
+
 #posts li {
     padding-top: 0.25em;
     padding-bottom: 0.25em;
@@ -77,11 +78,21 @@ h1,h2,h3 {
     margin-right: 1em;
 }
 
-#postForm {
+#postForm,#threadForm {
     width: 400px;
     margin: auto;
+    position: fixed;
+    bottom: 20px;
+    right:20px;;
 }
 
-#postForm textarea{
+#postForm textarea,#threadForm textarea{
     width: 100%;
+}
+
+@media screen and (max-width: 100em) {
+    #postForm, #threadForm {
+        padding: 20px;
+        position: relative;
+    }
 }
