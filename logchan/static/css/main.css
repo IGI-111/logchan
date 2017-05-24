@@ -1,5 +1,6 @@
 body{
-    font:1.2em/1.62 sans-serif;
+    font:1.15em/1.62 sans-serif;
+    background-color: #EFEFEF;
 }
 
 
@@ -43,7 +44,9 @@ header nav a {
 article {
     margin:1em auto;
     max-width:40em;
-    padding:0 .62em;
+    background-color: #FEFEFE;
+    padding-left: 2em;
+    padding-right: 2em;
 }
 
 h1,h2,h3 {
@@ -56,7 +59,7 @@ h1,h2,h3 {
     }
 }
 
-@media screen and (max-width: 70em) {
+@media screen and (max-width: 77em) {
     header {
         position: relative;
     }
@@ -79,20 +82,30 @@ h1,h2,h3 {
 }
 
 #postForm,#threadForm {
-    width: 400px;
+    width: 440px;
     margin: auto;
     position: fixed;
     bottom: 20px;
-    right:20px;;
+    right:10px;
+    text-align: right;
+    background-color: #FEFEFE;
+    padding: 5px;
 }
 
 #postForm textarea,#threadForm textarea{
     width: 100%;
+    min-height: 150px;
 }
 
-@media screen and (max-width: 100em) {
+@media screen and (max-width: 110em) {
     #postForm, #threadForm {
         padding: 20px;
         position: relative;
     }
+}
+
+article, #postForm, #threadForm {
+
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+      transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
