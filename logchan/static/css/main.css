@@ -1,5 +1,6 @@
 body{
-    font:1.15em/1.62 sans-serif;
+    font-size: 15pt;
+    font-family: 'Slabo 27px', serif;
     background-color: #EFEFEF;
 }
 
@@ -59,7 +60,7 @@ h1,h2,h3 {
     }
 }
 
-@media screen and (max-width: 77em) {
+@media screen and (max-width: 80em) {
     header {
         position: relative;
     }
@@ -97,7 +98,7 @@ h1,h2,h3 {
     min-height: 150px;
 }
 
-@media screen and (max-width: 110em) {
+@media screen and (max-width: 112em) {
     #postForm, #threadForm {
         padding: 20px;
         position: relative;
