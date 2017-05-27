@@ -7,7 +7,7 @@ function disableForm () {
 }
 
 function enableForm () {
-  document.querySelectorAll('#postForm input').forEach(elt => {
+  document.querySelectorAll('#postForm input, textarea').forEach(elt => {
     elt.readonly = false;
   });
 }
@@ -18,7 +18,16 @@ function sendPostForm (e) {
   disableForm();
 
   const form = document.querySelector('#postForm');
-  const data = new FormData(form);
+
+  const data = new FormData();
+  data.set('thread', CURRENT_THREAD);
+  data.set('message', document.querySelector('#postForm textarea[name=message]').value);
+  data.set('user_name', document.querySelector('#postForm input[name=user_name]').value);
+  const image = document.querySelector('#postForm input[name=image]').files[0];
+  if(image){
+    data.set('image', image);
+  }
+
   const request = new XMLHttpRequest();
 
   request.onreadystatechange = () => {
@@ -68,8 +77,20 @@ function updatePostDisplay(posts){
 
     postList.appendChild(node);
   });
+  setupListeners();
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+function toggleImage (e) {
+  e.preventDefault();
+  e.target.classList.toggle('full');
+}
+
+function setupListeners() {
   document.querySelector('#postForm').addEventListener('submit', sendPostForm);
-});
+  document.querySelectorAll('#posts img').forEach(e => {
+    e.addEventListener('click', toggleImage);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", setupListeners);
+

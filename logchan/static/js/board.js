@@ -1,17 +1,5 @@
 const CURRENT_BOARD = document.querySelector("#threadForm input[name=board]").value;
 
-function disableForm() {
-  document.querySelectorAll('#threadForm input').forEach(elt => {
-    elt.readonly = true;
-  });
-}
-
-function enableForm() {
-  document.querySelectorAll('#threadForm input').forEach(elt => {
-    elt.readonly = false;
-  });
-}
-
 function sendThreadForm (e) {
   e.preventDefault();    // stop form from submitting
 
@@ -49,6 +37,18 @@ function sendThreadForm (e) {
   };
   threadRequest.open('POST', '/api/thread/', true);
   threadRequest.send(threadData);
+}
+
+function disableForm() {
+  document.querySelectorAll('#threadForm input').forEach(elt => {
+    elt.readonly = true;
+  });
+}
+
+function enableForm() {
+  document.querySelectorAll('#threadForm input').forEach(elt => {
+    elt.readonly = false;
+  });
 }
 
 function reloadThreads() {
