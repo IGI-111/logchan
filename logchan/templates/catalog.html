@@ -16,15 +16,11 @@
         {% csrf_token %}
         <input name="board" type="hidden" value="{{board.name}}">
         <textarea name="message"></textarea>
+        <input id="usernameInput" placeholder="Username" name="user_name" type="text">
+        <input id="subjectInput" placeholder="Subject" name="subject" type="text">
         <br>
-        <label for="usernameInput">Username:</label>
-        <input id="usernameInput" name="user_name" type="text" value="Anonymous">
-        <br>
-        <label for="subjectInput">Subject:</label>
-        <input id="subjectInput" name="subject" type="text">
-        <br>
-        <label for="imageInput">Image:</label>
-        <input id="imageInput" name="image" type="file">
+        <label class="fileLabel" for="imageInput">Upload Image</label>
+        <input id="imageInput" name="image" style="display:none;" type="file">
         <input type="submit" value="Post">
     </fieldset>
 </form>

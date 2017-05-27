@@ -42,7 +42,7 @@ header nav a {
     text-decoration: inherit;
 }
 
-article {
+#posts, #threads {
     margin:1em auto;
     max-width:40em;
     background-color: #FEFEFE;
@@ -54,18 +54,11 @@ h1,h2,h3 {
     line-height:1.2;
 }
 
-@media print{
-    article{
-        max-width:none
-    }
-}
-
 @media screen and (max-width: 80em) {
     header {
         position: relative;
     }
 }
-
 
 #posts li {
     padding-top: 0.25em;
@@ -75,6 +68,10 @@ h1,h2,h3 {
     min-height: 4em;
 }
 
+#posts li:last-child {
+    border-bottom: none;
+}
+
 #posts li img {
     float:left;
     max-height: 4em;
@@ -82,7 +79,7 @@ h1,h2,h3 {
     margin-right: 1em;
 }
 
-#postForm,#threadForm {
+#postForm, #threadForm {
     width: 440px;
     margin: auto;
     position: fixed;
@@ -93,19 +90,32 @@ h1,h2,h3 {
     padding: 5px;
 }
 
-#postForm textarea,#threadForm textarea{
+form textarea{
     width: 100%;
     min-height: 150px;
+
+}
+
+form textarea, input, .fileLabel {
+    background-color: inherit;
+    border: solid 1px #CCCCCC;
+}
+
+form .fileLabel {
+    padding-left: 5px;
+    padding-right: 5px;
+    display: inline-block;
 }
 
 @media screen and (max-width: 112em) {
     #postForm, #threadForm {
         padding: 20px;
         position: relative;
+        margin-top: 30px;
     }
 }
 
-article, #postForm, #threadForm {
+#posts, #threads, form {
 
       box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
       transition: all 0.3s cubic-bezier(.25,.8,.25,1);

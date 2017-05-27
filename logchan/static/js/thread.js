@@ -1,11 +1,28 @@
 const CURRENT_THREAD = parseInt(document.querySelector("#postForm input[name=thread]").value);
 
-function sendPostForm(e){
-  e.preventDefault();    //stop form from submitting
+function disableForm () {
+  document.querySelectorAll('#postForm input').forEach(elt => {
+    elt.readonly = true;
+  });
+}
+
+function enableForm () {
+  document.querySelectorAll('#postForm input').forEach(elt => {
+    elt.readonly = false;
+  });
+}
+
+function sendPostForm (e) {
+  e.preventDefault(); // stop form from submitting
+
+  disableForm();
+
   const form = document.querySelector('#postForm');
   const data = new FormData(form);
   const request = new XMLHttpRequest();
+
   request.onreadystatechange = () => {
+    enableForm();
     if(request.readyState === XMLHttpRequest.DONE && request.status === 201) {
       reloadPosts();
     }
@@ -16,7 +33,7 @@ function sendPostForm(e){
 
 function reloadPosts() {
   const request = new XMLHttpRequest();
-  request.onreadystatechange = () =>  {
+  request.onreadystatechange = () => {
     if(request.readyState === XMLHttpRequest.DONE && request.status === 200) {
       const data = JSON.parse(request.response);
       updatePostDisplay(data);

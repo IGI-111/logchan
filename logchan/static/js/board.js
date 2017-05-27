@@ -1,7 +1,21 @@
 const CURRENT_BOARD = document.querySelector("#threadForm input[name=board]").value;
 
-function sendThreadForm(e){
-  e.preventDefault();    //stop form from submitting
+function disableForm() {
+  document.querySelectorAll('#threadForm input').forEach(elt => {
+    elt.readonly = true;
+  });
+}
+
+function enableForm() {
+  document.querySelectorAll('#threadForm input').forEach(elt => {
+    elt.readonly = false;
+  });
+}
+
+function sendThreadForm (e) {
+  e.preventDefault();    // stop form from submitting
+
+  disableForm();
 
   const threadData = new FormData();
   threadData.set('board', CURRENT_BOARD);
@@ -10,19 +24,23 @@ function sendThreadForm(e){
   const postData = new FormData();
   postData.set('message', document.querySelector('#threadForm textarea[name=message]').value);
   postData.set('username', document.querySelector('#threadForm input[name=user_name]').value);
-  postData.set('image', document.querySelector('#threadForm input[name=image]').value);
+  postData.set('image', document.querySelector('#threadForm input[name=image]').files[0]);
 
   const threadRequest = new XMLHttpRequest();
   threadRequest.onreadystatechange = () => {
-    if(threadRequest.readyState === XMLHttpRequest.DONE && threadRequest.status === 201) {
+    if (threadRequest.readyState === XMLHttpRequest.DONE && threadRequest.status === 201) {
       const threadId = JSON.parse(threadRequest.response).id;
       postData.set('thread', threadId);
 
       // now post the OP
       const postRequest = new XMLHttpRequest();
       postRequest.onreadystatechange = () => {
+        enableForm();
         if(postRequest.readyState === XMLHttpRequest.DONE && postRequest.status === 201) {
           reloadThreads();
+
+          // redirect to thread
+          window.location.href = `/board/${CURRENT_BOARD}/thread/${threadId}/`;
         }
       }
       postRequest.open('POST', '/api/post/', true);
