@@ -18,6 +18,9 @@
         <div class="header-container">
             <header class="wrapper clearfix">
                 <h1 class="title"><a href="/">Log(<span id="titleChan">chan</span>)</a></h1>
+                {% if board %}
+                    <h2>{{board.name}} - {{board.description}}</h2>
+                {% endif %}
                 <nav>
                     <ul>
                         {% for b in boards %}
