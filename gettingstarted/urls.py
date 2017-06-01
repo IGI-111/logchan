@@ -14,8 +14,9 @@ import logchan.api
 
 urlpatterns = [
     url(r'^$', logchan.views.index, name='index'),
-    url(r'^(?P<board_name>[^/]+)/$', logchan.views.board, name='board'),
-    url(r'^(?P<board_name>[^/]+)/(?P<thread_id>[^/]+)/$', logchan.views.thread, name='board'),
+    url(r'^login', logchan.views.login, name='login'),
     url(r'^api/', include(logchan.api)),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^(?P<board_name>[^/]+)/$', logchan.views.board, name='board'),
+    url(r'^(?P<board_name>[^/]+)/(?P<thread_id>[^/]+)/$', logchan.views.thread, name='board'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

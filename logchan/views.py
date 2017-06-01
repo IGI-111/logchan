@@ -27,3 +27,6 @@ def thread(request, board_name, thread_id):
         'thread':thread,
         'posts':posts
         })
+
+def login(request):
+    return render(request, "login.html")
