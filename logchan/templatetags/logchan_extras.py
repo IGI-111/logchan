@@ -5,5 +5,8 @@ register = template.Library()
 
 @register.filter(name='is_in_group') 
 def is_in_group(user, group_name):
-    group =  Group.objects.get(name=group_name) 
-    return group in user.groups.all() 
+    try:
+        group =  Group.objects.get(name=group_name)
+        return group in user.groups.all()
+    except DoesNotExist:
+        return false
