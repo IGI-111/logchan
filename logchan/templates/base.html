@@ -18,9 +18,6 @@
         <div class="header-container">
             <header class="wrapper clearfix">
                 <h1 class="title"><a href="/">Log(<span id="titleChan">chan</span>)</a></h1>
-                {% if board %}
-                    <h2>{{board.name}} - {{board.description}}</h2>
-                {% endif %}
                 <nav>
                     <ul>
                         {% for b in boards %}
@@ -32,6 +29,9 @@
                         {% endfor %}
                     </ul>
                 </nav>
+                {% if board %}
+                    <h2><a href="/{{ board.name }}">{{ board.name }} - {{board.description}}</a></h2>
+                {% endif %}
                 {% if user.is_authenticated %}
                     <p>Connected as <b>{{ user.username }}</b></p>
                     <a href="/logout/">Logout</a>
