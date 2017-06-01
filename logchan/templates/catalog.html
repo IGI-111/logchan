@@ -2,29 +2,30 @@
 {% load staticfiles %}
 
 {% block content %}
+    <article>
+        <ul id="threads">
+            {% for thread in threads %}
+                <li>
+                    <a href="thread/{{thread.id}}">{{ thread.subject }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </article>
 
-<ul id="threads">
-    {% for thread in threads %}
-        <li>
-            <a href="thread/{{thread.id}}">{{ thread.subject }}</a>
-        </li>
-    {% endfor %}
-</ul>
+    <form id="threadForm" method="POST">
+        <fieldset>
+            {% csrf_token %}
+            <input name="board" type="hidden" value="{{board.name}}">
+            <textarea name="message"></textarea>
+            <input id="usernameInput" placeholder="Username" name="user_name" type="text">
+            <input id="subjectInput" placeholder="Subject" name="subject" type="text">
+            <br>
+            <label class="fileLabel" for="imageInput">Upload Image</label>
+            <input id="imageInput" name="image" style="display:none;" type="file">
+            <input type="submit" value="Post">
+        </fieldset>
+    </form>
 
-<form id="threadForm" method="POST">
-    <fieldset>
-        {% csrf_token %}
-        <input name="board" type="hidden" value="{{board.name}}">
-        <textarea name="message"></textarea>
-        <input id="usernameInput" placeholder="Username" name="user_name" type="text">
-        <input id="subjectInput" placeholder="Subject" name="subject" type="text">
-        <br>
-        <label class="fileLabel" for="imageInput">Upload Image</label>
-        <input id="imageInput" name="image" style="display:none;" type="file">
-        <input type="submit" value="Post">
-    </fieldset>
-</form>
-
-<script src="/static/js/board.js"></script>
+    <script src="/static/js/board.js"></script>
 
 {% endblock %}
