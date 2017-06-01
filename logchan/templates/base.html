@@ -27,6 +27,10 @@
                         {% endfor %}
                     </ul>
                 </nav>
+                {% if user.is_authenticated %}
+                    <p>Connected as <b>{{ user.username }}</b></p>
+                    <a href="/logout/">Logout</a>
+                {% endif %}
             </header>
         </div>
 

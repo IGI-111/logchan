@@ -5,8 +5,11 @@
     <article>
         <form method="post" role="form" action="">
             {% csrf_token %}
-            <input type="text" name="username" placeholder="Utilisateur">
-            <input type="password" name="password" placeholder="Mot de passe">
+            {% if errors %}
+                <p class="error">{{ errors }}</p>
+            {% endif %}
+            <input type="text" name="username" placeholder="Username">
+            <input type="password" name="password" placeholder="Password">
             <input type="submit" value="Login" />
         </form>
     </article>

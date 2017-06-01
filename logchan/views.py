@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import TemplateView
 from .models import Board, Thread, Post
@@ -31,7 +31,9 @@ def thread(request, board_name, thread_id):
         })
 
 class Login(TemplateView):
-    template_name = 'login.html'
+    def get(self, request, **kwargs):
+        boards = Board.objects.all()
+        return render(request, 'login.html', {'boards': boards})
     def post(self, request, **kwargs):
         username = request.POST.get('username', False)
         password = request.POST.get('password', False)
@@ -39,4 +41,10 @@ class Login(TemplateView):
         if user is not None and user.is_active:
             login(request, user)
             return HttpResponseRedirect('/')
-        return render(request, self.template_name)
+        boards = Board.objects.all()
+        return render(request, 'login.html', {'boards': boards, 'errors' : 'The username or password you entered is incorrect.'})
+
+class Logout(TemplateView):
+    def get(self, request, **kwargs):
+        logout(request)
+        return HttpResponseRedirect('/')
