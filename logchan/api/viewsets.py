@@ -35,13 +35,6 @@ def grecaptcha_verify(request):
     verify_rs = verify_rs.json()
     return verify_rs.get("success", False)
 
-#def is_in_group(user, group_name):
-#    try:
-#        group = Group.objects.get(name=group_name)
-#        return group in user.groups.all()
-#    except ObjectDoesNotExist:
-#        return False
-
 # ViewSets define the view behavior.
 class BoardViewSet(viewsets.ModelViewSet):
     queryset = Board.objects.all()
@@ -56,9 +49,8 @@ class ThreadViewSet(viewsets.ModelViewSet):
         return self.destroy(request, *args, **kwargs)
 
     def create(self, request):
-        if request.user is not None and logchan_extras.is_in_group(request.user, "Admin"):
-            return super(ThreadViewSet, self).create(request)
-        if grecaptcha_verify(request):
+        if request.user is not None and logchan_extras.is_in_group(request.user, "Admin") or (
+                grecaptcha_verify(request)):
             return super(ThreadViewSet, self).create(request)
         else:
             return Response('Captcha not validated', status=status.HTTP_400_BAD_REQUEST)
@@ -69,10 +61,9 @@ class ThreadByBoardViewSet(ThreadViewSet):
         return Response(serializer.data)
 
     def create(self, request):
-        if request.user is not None and logchan_extras.is_in_group(request.user, "Admin"):
+        if request.user is not None and logchan_extras.is_in_group(request.user, "Admin") or (
+                grecaptcha_verify(request)):
             return super(ThreadViewSet, self).create(request)
-        if grecaptcha_verify(request):
-            return super(ThreadByBoardViewSet, self).create(request)
         else:
             return Response('Captcha not validated', status=status.HTTP_400_BAD_REQUEST)
 
@@ -89,10 +80,9 @@ class PostViewSet(viewsets.ModelViewSet):
         return self.destroy(request, *args, **kwargs)
 
     def create(self, request):
-        if request.user is not None and logchan_extras.is_in_group(request.user, "Admin"):
-            return super(PostViewSet, self).create(request)
-        if grecaptcha_verify(request):
-            return super().create(request)
+        if request.user is not None and logchan_extras.is_in_group(request.user, "Admin") or (
+                grecaptcha_verify(request)):
+            return super(ThreadViewSet, self).create(request)
         else:
             return Response('Captcha not validated', status=status.HTTP_400_BAD_REQUEST)
 

@@ -9,8 +9,9 @@ from .models import Board, Thread, Post
 from .api import grecaptcha_verify
 
 def post_thread(request):
-    # if not grecaptcha_verify(request):
-    #     return HttpResponse("Cannot validate captcha", status=400)
+    if not (request.user is not None and logchan_extras.is_in_group(request.user, "Admin")) or (
+            not grecaptcha_verify(request)):
+        return HttpResponse("Cannot validate captcha", status=400)
 
     board = Board.objects.get(name=request.POST.get('board'))
     thread = Thread(board=board, subject=request.POST.get('subject'))
