@@ -2,7 +2,12 @@
 {% load staticfiles %}
 
 {% block content %}
-    <h1>Bienvenue sur la page de login</h1>
-    <script src="/static/js/board.js"></script>
-
+    <article>
+        <form method="post" role="form" action="">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Utilisateur">
+            <input type="password" name="password" placeholder="Mot de passe">
+            <input type="submit" value="Login" />
+        </form>
+    </article>
 {% endblock %}

@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.contrib.auth import authenticate, login, logout
+from django.views.generic import TemplateView
 from .models import Board, Thread, Post
 
 def index(request):
@@ -28,5 +30,13 @@ def thread(request, board_name, thread_id):
         'posts':posts
         })
 
-def login(request):
-    return render(request, "login.html")
+class Login(TemplateView):
+    template_name = 'login.html'
+    def post(self, request, **kwargs):
+        username = request.POST.get('username', False)
+        password = request.POST.get('password', False)
+        user = authenticate(username=username, password=password)
+        if user is not None and user.is_active:
+            login(request, user)
+            return HttpResponseRedirect('/')
+        return render(request, self.template_name)
