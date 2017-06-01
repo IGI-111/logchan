@@ -33,26 +33,18 @@ function sendThreadForm (e) {
 
           // redirect to thread
           window.location.href = `/board/${CURRENT_BOARD}/thread/${threadId}/`;
+        } else if(postRequest.readyState === XMLHttpRequest.DONE) {
+          displayError(postRequest.response);
         }
       }
       postRequest.open('POST', '/api/post/', true);
       postRequest.send(postData);
+    } else if(threadRequest.readyState === XMLHttpRequest.DONE) {
+      displayError(threadRequest.response);
     }
   };
   threadRequest.open('POST', '/api/thread/', true);
   threadRequest.send(threadData);
-}
-
-function disableForm() {
-  document.querySelectorAll('#threadForm input').forEach(elt => {
-    elt.readonly = true;
-  });
-}
-
-function enableForm() {
-  document.querySelectorAll('#threadForm input').forEach(elt => {
-    elt.readonly = false;
-  });
 }
 
 function reloadThreads() {

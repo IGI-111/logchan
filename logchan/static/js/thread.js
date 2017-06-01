@@ -1,18 +1,5 @@
 const CURRENT_THREAD = parseInt(document.querySelector("#postForm input[name=thread]").value);
 
-function disableForm () {
-  document.querySelectorAll('#postForm input').forEach(elt => {
-    elt.readonly = true;
-  });
-}
-
-function enableForm () {
-  document.querySelectorAll('#postForm input, textarea').forEach(elt => {
-    elt.readonly = false;
-  });
-  grecaptcha.reset();
-}
-
 function sendPostForm (e) {
   e.preventDefault(); // stop form from submitting
 
@@ -37,6 +24,8 @@ function sendPostForm (e) {
     enableForm();
     if(request.readyState === XMLHttpRequest.DONE && request.status === 201) {
       reloadPosts();
+    } else if(request.readyState === XMLHttpRequest.DONE) {
+      displayError(request.response);
     }
   };
   request.open('POST', '/api/post/', true);

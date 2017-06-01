@@ -20,7 +20,7 @@ class Post(models.Model):
     user_name = models.CharField(max_length=200, null=True, blank=True)
     deletion_password = models.CharField(max_length=8)
     image = models.ImageField(upload_to='images/', null=True, blank=True)
-    message = models.TextField()
+    message = models.TextField(null=True, blank=True)
     def __str__(self):
         return self.message
 

@@ -35,13 +35,6 @@ class BoardViewSet(viewsets.ModelViewSet):
     def delete(self, request, *args, **kwargs):
         return self.destroy(request, *args, **kwargs)
 
-    def create(self, request):
-        if grecaptcha_verify(request):
-            return super().create(request)
-        else:
-            return Response('Captcha not validated', status=status.HTTP_400_BAD_REQUEST)
-
-
 class ThreadViewSet(viewsets.ModelViewSet):
     queryset = Thread.objects.all()
     serializer_class = ThreadSerializer
