@@ -6,6 +6,8 @@ from django.shortcuts import get_object_or_404
 from ..models import Board, Thread, Post
 import requests
 from django.conf import settings
+from django.core.exceptions import ObjectDoesNotExist
+from ..templatetags import logchan_extras
 
 def get_client_ip(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
@@ -28,6 +30,13 @@ def grecaptcha_verify(request):
     verify_rs = verify_rs.json()
     return verify_rs.get("success", False)
 
+#def is_in_group(user, group_name):
+#    try:
+#        group = Group.objects.get(name=group_name)
+#        return group in user.groups.all()
+#    except ObjectDoesNotExist:
+#        return False
+
 # ViewSets define the view behavior.
 class BoardViewSet(viewsets.ModelViewSet):
     queryset = Board.objects.all()
@@ -42,6 +51,8 @@ class ThreadViewSet(viewsets.ModelViewSet):
         return self.destroy(request, *args, **kwargs)
 
     def create(self, request):
+        if request.user is not None and logchan_extras.is_in_group(request.user, "Admin"):
+            return super(ThreadViewSet, self).create(request)
         if grecaptcha_verify(request):
             return super(ThreadViewSet, self).create(request)
         else:
@@ -54,6 +65,8 @@ class ThreadByBoardViewSet(ThreadViewSet):
         return Response(serializer.data)
 
     def create(self, request):
+        if request.user is not None and logchan_extras.is_in_group(request.user, "Admin"):
+            return super(ThreadViewSet, self).create(request)
         if grecaptcha_verify(request):
             return super(ThreadByBoardViewSet, self).create(request)
         else:
@@ -72,6 +85,8 @@ class PostViewSet(viewsets.ModelViewSet):
         return self.destroy(request, *args, **kwargs)
 
     def create(self, request):
+        if request.user is not None and logchan_extras.is_in_group(request.user, "Admin"):
+            return super(PostViewSet, self).create(request)
         if grecaptcha_verify(request):
             return super().create(request)
         else:

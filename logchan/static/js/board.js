@@ -8,14 +8,22 @@ function sendThreadForm (e) {
   const threadData = new FormData();
   threadData.set('board', CURRENT_BOARD);
   threadData.set('subject', document.querySelector('#threadForm *[name=subject]').value);
-  threadData.set('g-recaptcha-response', document.querySelector('#threadForm *[name=g-recaptcha-response]').value);
+
+  const captcha = document.querySelector('#threadForm *[name=g-recaptcha-response]');
+  if(captcha) {
+    threadData.set('g-recaptcha-response', captcha.value);
+  }
   threadData.set('csrfmiddlewaretoken', document.querySelector('#threadForm *[name=csrfmiddlewaretoken]').value);
 
   const postData = new FormData();
   postData.set('message', document.querySelector('#threadForm *[name=message]').value);
   postData.set('username', document.querySelector('#threadForm *[name=user_name]').value);
   postData.set('image', document.querySelector('#threadForm *[name=image]').files[0]);
-  postData.set('g-recaptcha-response', document.querySelector('#threadForm *[name=g-recaptcha-response]').value);
+
+  const postCaptcha = document.querySelector('#threadForm *[name=g-recaptcha-response]');
+  if(postCaptcha) {
+    postData.set('g-recaptcha-response', postCaptcha.value);
+  }
   postData.set('csrfmiddlewaretoken', document.querySelector('#threadForm *[name=csrfmiddlewaretoken]').value);
 
   const threadRequest = new XMLHttpRequest();
@@ -82,7 +90,10 @@ function updateThreadDisplay(threads){
 
 document.addEventListener("DOMContentLoaded", function() {
   document.querySelector('#threadForm').addEventListener('submit', sendThreadForm);
-  document.querySelector('#deleteBoardForm').addEventListener('submit', deleteBoard);
+  const deleteForm = document.querySelector('#deleteBoardForm');
+  if(deleteForm) {
+    deleteForm.addEventListener('submit', deleteBoard);
+  }
 });
 
 function deleteBoard(e) {

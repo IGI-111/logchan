@@ -29,7 +29,9 @@
             {% csrf_token %}
             <input name="thread" type="hidden" value="{{thread.id}}">
             <textarea name="message"></textarea>
+            {% if user|is_in_group:"Admin" == False and user|is_in_group:"Mod" == False %}
             <div class="g-recaptcha" data-sitekey="6LehwCMUAAAAAETf-zimatAVRGFiIENLWyIfPE8G"></div>
+            {% endif %}
             <input id="usernameInput" placeholder="Username" name="user_name" type="text">
             <br>
             <label class="fileLabel" for="imageInput">Upload Image</label>

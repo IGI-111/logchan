@@ -11,7 +11,10 @@ function sendPostForm (e) {
   data.set('thread', CURRENT_THREAD);
   data.set('message', document.querySelector('#postForm *[name=message]').value);
   data.set('user_name', document.querySelector('#postForm *[name=user_name]').value);
-  data.set('g-recaptcha-response', document.querySelector('#postForm *[name=g-recaptcha-response]').value);
+  const captcha = document.querySelector('#postForm *[name=g-recaptcha-response]');
+  if(captcha) {
+    data.set('g-recaptcha-response', captcha.value);
+  }
   data.set('csrfmiddlewaretoken', document.querySelector('#postForm *[name=csrfmiddlewaretoken]').value);
   const image = document.querySelector('#postForm input[name=image]').files[0];
   if(image){

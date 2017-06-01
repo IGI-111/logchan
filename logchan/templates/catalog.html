@@ -18,7 +18,9 @@
             {% csrf_token %}
             <input name="board" type="hidden" value="{{board.name}}">
             <textarea name="message"></textarea>
-            <div class="g-recaptcha" data-sitekey="6LehwCMUAAAAAETf-zimatAVRGFiIENLWyIfPE8G"></div>
+            {% if user|is_in_group:"Admin" == False and user|is_in_group:"Mod" == False %}
+            <div id="captcha" class="g-recaptcha" data-sitekey="6LehwCMUAAAAAETf-zimatAVRGFiIENLWyIfPE8G"></div>
+            {% endif %}
             <input id="usernameInput" placeholder="Username" name="user_name" type="text">
             <input id="subjectInput" placeholder="Subject" name="subject" type="text">
             <br>

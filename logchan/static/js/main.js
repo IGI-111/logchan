@@ -9,7 +9,9 @@ function disableForm() {
 }
 
 function enableForm() {
-  grecaptcha.reset();
+  if(document.getElementById("captcha")) {
+      grecaptcha.reset();
+  }
   document.querySelectorAll('form input').forEach(elt => {
     elt.readonly = false;
   });
