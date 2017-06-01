@@ -8,5 +8,5 @@ def is_in_group(user, group_name):
     try:
         group =  Group.objects.get(name=group_name)
         return group in user.groups.all()
-    except DoesNotExist:
+    except Answer.DoesNotExist:
         return false

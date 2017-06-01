@@ -43,7 +43,7 @@
 {% endblock %}
 
 {% block management %}
-{% if user|is_in_group:"Admin" %}
+{% if user|is_in_group:"Admin" or user|is_in_group:"Mod" %}
 <article>
 <form id="deleteThreadForm">
     <fieldset>
