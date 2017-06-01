@@ -21,6 +21,7 @@
             {% csrf_token %}
             <input name="thread" type="hidden" value="{{thread.id}}">
             <textarea name="message"></textarea>
+            <div class="g-recaptcha" data-sitekey="6LehwCMUAAAAAETf-zimatAVRGFiIENLWyIfPE8G"></div>
             <input id="usernameInput" placeholder="Username" name="user_name" type="text">
             <br>
             <label class="fileLabel" for="imageInput">Upload Image</label>

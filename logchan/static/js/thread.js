@@ -10,6 +10,7 @@ function enableForm () {
   document.querySelectorAll('#postForm input, textarea').forEach(elt => {
     elt.readonly = false;
   });
+  grecaptcha.reset();
 }
 
 function sendPostForm (e) {
@@ -21,8 +22,10 @@ function sendPostForm (e) {
 
   const data = new FormData();
   data.set('thread', CURRENT_THREAD);
-  data.set('message', document.querySelector('#postForm textarea[name=message]').value);
-  data.set('user_name', document.querySelector('#postForm input[name=user_name]').value);
+  data.set('message', document.querySelector('#postForm *[name=message]').value);
+  data.set('user_name', document.querySelector('#postForm *[name=user_name]').value);
+  data.set('g-recaptcha-response', document.querySelector('#postForm *[name=g-recaptcha-response]').value);
+  data.set('csrfmiddlewaretoken', document.querySelector('#postForm *[name=csrfmiddlewaretoken]').value);
   const image = document.querySelector('#postForm input[name=image]').files[0];
   if(image){
     data.set('image', image);

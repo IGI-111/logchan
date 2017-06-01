@@ -17,6 +17,7 @@
             {% csrf_token %}
             <input name="board" type="hidden" value="{{board.name}}">
             <textarea name="message"></textarea>
+            <div class="g-recaptcha" data-sitekey="6LehwCMUAAAAAETf-zimatAVRGFiIENLWyIfPE8G"></div>
             <input id="usernameInput" placeholder="Username" name="user_name" type="text">
             <input id="subjectInput" placeholder="Subject" name="subject" type="text">
             <br>

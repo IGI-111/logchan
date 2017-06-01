@@ -111,6 +111,11 @@ form textarea{
 
 }
 
+form .g-recaptcha {
+    float: right;
+    clear: both;
+}
+
 form textarea, input, .fileLabel {
     background-color: inherit;
     border: solid 1px #CCCCCC;

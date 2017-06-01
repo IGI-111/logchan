@@ -1,4 +1,4 @@
-const CURRENT_BOARD = document.querySelector("#threadForm input[name=board]").value;
+const CURRENT_BOARD = document.querySelector("#threadForm *[name=board]").value;
 
 function sendThreadForm (e) {
   e.preventDefault();    // stop form from submitting
@@ -7,12 +7,16 @@ function sendThreadForm (e) {
 
   const threadData = new FormData();
   threadData.set('board', CURRENT_BOARD);
-  threadData.set('subject', document.querySelector('#threadForm input[name=subject]').value);
+  threadData.set('subject', document.querySelector('#threadForm *[name=subject]').value);
+  threadData.set('g-recaptcha-response', document.querySelector('#threadForm *[name=g-recaptcha-response]').value);
+  threadData.set('csrfmiddlewaretoken', document.querySelector('#threadForm *[name=csrfmiddlewaretoken]').value);
 
   const postData = new FormData();
-  postData.set('message', document.querySelector('#threadForm textarea[name=message]').value);
-  postData.set('username', document.querySelector('#threadForm input[name=user_name]').value);
-  postData.set('image', document.querySelector('#threadForm input[name=image]').files[0]);
+  postData.set('message', document.querySelector('#threadForm *[name=message]').value);
+  postData.set('username', document.querySelector('#threadForm *[name=user_name]').value);
+  postData.set('image', document.querySelector('#threadForm *[name=image]').files[0]);
+  postData.set('g-recaptcha-response', document.querySelector('#threadForm *[name=g-recaptcha-response]').value);
+  postData.set('csrfmiddlewaretoken', document.querySelector('#threadForm *[name=csrfmiddlewaretoken]').value);
 
   const threadRequest = new XMLHttpRequest();
   threadRequest.onreadystatechange = () => {

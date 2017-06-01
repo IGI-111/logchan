@@ -24,6 +24,8 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # SECURITY WARNING: change this before deploying to production!
 SECRET_KEY = 'i+acxn5(akgsn!sr4^qgf(^m&*@+g1@u^t@=8s@axc41ml*f=s'
 
+RECAPTCHA_SECRET_KEY = '6LehwCMUAAAAAHTx6Q0f_p8JBMqiM9h4UQ8d2Dn1'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
