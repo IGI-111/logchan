@@ -9,7 +9,6 @@ header {
     text-align: center;
     position: fixed;
     top: auto;
-    left: 20px;
 }
 
 header h1 {
@@ -70,6 +69,22 @@ h1,h2,h3 {
     clear: both;
 }
 
+#threads {
+    padding-bottom: 5px;
+    padding-top: 5px;
+    display: block;
+    text-align: center;
+}
+#threads li {
+    list-style:none;
+    width: 18%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    overflow: hidden;
+    margin: 5px;
+    border: 1px solid #DFDFDF;
+    display: inline-block;
+}
 
 .post_id, .user_name {
     float: right;
@@ -108,7 +123,7 @@ h1,h2,h3 {
 
 form textarea{
     width: 100%;
-    min-height: 150px;
+    min-height: 100px;
 
 }
 
@@ -120,6 +135,7 @@ form .g-recaptcha {
 form textarea, input, .fileLabel {
     background-color: inherit;
     border: solid 1px #CCCCCC;
+    margin: 1px;
 }
 
 form .fileLabel {
