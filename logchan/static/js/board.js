@@ -82,4 +82,27 @@ function updateThreadDisplay(threads){
 
 document.addEventListener("DOMContentLoaded", function() {
   document.querySelector('#threadForm').addEventListener('submit', sendThreadForm);
+  document.querySelector('#deleteBoardForm').addEventListener('submit', deleteBoard);
 });
+
+function deleteBoard(e) {
+  e.preventDefault();    // stop form from submitting
+  if(!confirm("Do you really want to delete this board ?")) {
+    return;
+  }
+  const board = document.querySelector("#deleteBoardForm *[name=board]").value;
+  const csrftoken = document.querySelector('#deleteBoardForm *[name=csrfmiddlewaretoken]').value;
+
+  const deleteRequest = new XMLHttpRequest();
+  deleteRequest.onreadystatechange = () => {
+    if (deleteRequest.readyState === XMLHttpRequest.DONE && deleteRequest.status === 204) {
+      window.location = "/";
+    }
+  };
+  console.log("sending delete request");
+  const url = '/api/board/' + board + '/';
+  deleteRequest.open('DELETE', url, true);
+  deleteRequest.setRequestHeader("X-CSRFToken", csrftoken);
+  deleteRequest.send();
+}
+

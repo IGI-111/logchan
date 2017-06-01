@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load logchan_extras %}
 
 {% block content %}
     <article>
@@ -32,4 +33,19 @@
 
     <script src="/static/js/thread.js"></script>
 
+{% endblock %}
+
+{% block management %}
+{% if user|is_in_group:"Admin" %}
+<article>
+<form id="deleteThreadForm">
+    <fieldset>
+        {% csrf_token %}
+        <input name="board" type="hidden" value="{{board.name}}">
+        <input name="thread" type="hidden" value="{{thread.id}}">
+        <input type="submit" value="Delete thread">
+    </fieldset>
+</form>
+</article>
+{% endif %}
 {% endblock %}

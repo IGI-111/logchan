@@ -93,7 +93,28 @@ function setupListeners() {
   document.querySelectorAll('.post_id').forEach(e => {
     e.addEventListener('click', respondToPost);
   })
+  document.querySelector('#deleteThreadForm').addEventListener('submit', deleteThread);
 }
 
 document.addEventListener("DOMContentLoaded", setupListeners);
 
+function deleteThread(e) {
+  e.preventDefault();    // stop form from submitting
+  if(!confirm("Do you really want to delete this thread ?")) {
+    return;
+  }
+  const board = document.querySelector("#deleteThreadForm *[name=board]").value;
+  const thread = document.querySelector("#deleteThreadForm *[name=thread]").value;
+  const csrftoken = document.querySelector('#deleteThreadForm *[name=csrfmiddlewaretoken]').value;
+
+  const deleteRequest = new XMLHttpRequest();
+  deleteRequest.onreadystatechange = () => {
+    if (deleteRequest.readyState === XMLHttpRequest.DONE && deleteRequest.status === 204) {
+      window.location = "/" + board + "/";
+    }
+  };
+  const url = '/api/thread/' + thread + '/';
+  deleteRequest.open('DELETE', url, true);
+  deleteRequest.setRequestHeader("X-CSRFToken", csrftoken);
+  deleteRequest.send();
+}

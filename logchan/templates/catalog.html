@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load logchan_extras %}
 
 {% block content %}
     <article>
@@ -29,4 +30,18 @@
 
     <script src="/static/js/board.js"></script>
 
+{% endblock %}
+
+{% block management %}
+{% if user|is_in_group:"Admin" %}
+<article>
+<form id="deleteBoardForm">
+    <fieldset>
+        {% csrf_token %}
+        <input name="board" type="hidden" value="{{board.name}}">
+        <input type="submit" value="Delete board">
+    </fieldset>
+</form>
+</article>
+{% endif %}
 {% endblock %}

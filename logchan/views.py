@@ -48,3 +48,4 @@ class Logout(TemplateView):
     def get(self, request, **kwargs):
         logout(request)
         return HttpResponseRedirect('/')
+

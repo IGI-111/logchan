@@ -43,7 +43,7 @@ class ThreadViewSet(viewsets.ModelViewSet):
 
     def create(self, request):
         if grecaptcha_verify(request):
-            return super().create(request)
+            return super(ThreadViewSet, self).create(request)
         else:
             return Response('Captcha not validated', status=status.HTTP_400_BAD_REQUEST)
 
@@ -55,7 +55,7 @@ class ThreadByBoardViewSet(ThreadViewSet):
 
     def create(self, request):
         if grecaptcha_verify(request):
-            return super().create(request)
+            return super(ThreadByBoardViewSet, self).create(request)
         else:
             return Response('Captcha not validated', status=status.HTTP_400_BAD_REQUEST)
 
