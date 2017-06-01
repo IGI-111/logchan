@@ -2,30 +2,32 @@
 {% load staticfiles %}
 
 {% block content %}
-<ul id="posts">
-    {% for post in posts %}
-        <li>
-            {% if post.image %}
-            <img src="{{MEDIA_URL}}{{post.image.url}}" alt="{{post.id}}"/>
-            {% endif %}
-            <p>{{ post.message }}</p>
-        </li>
-    {% endfor %}
-</ul>
+    <article>
+        <ul id="posts">
+            {% for post in posts %}
+                <li>
+                    {% if post.image %}
+                        <img src="{{MEDIA_URL}}{{post.image.url}}" alt="{{post.id}}"/>
+                    {% endif %}
+                    <p>{{ post.message }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </article>
 
-<form id="postForm" method="POST">
-    <fieldset>
-        {% csrf_token %}
-        <input name="thread" type="hidden" value="{{thread.id}}">
-        <textarea name="message"></textarea>
-        <input id="usernameInput" placeholder="Username" name="user_name" type="text">
-        <br>
-        <label class="fileLabel" for="imageInput">Upload Image</label>
-        <input id="imageInput" name="image" style="display:none;" type="file">
-        <input type="submit" value="Post">
-    </fieldset>
-</form>
+    <form id="postForm" method="POST">
+        <fieldset>
+            {% csrf_token %}
+            <input name="thread" type="hidden" value="{{thread.id}}">
+            <textarea name="message"></textarea>
+            <input id="usernameInput" placeholder="Username" name="user_name" type="text">
+            <br>
+            <label class="fileLabel" for="imageInput">Upload Image</label>
+            <input id="imageInput" name="image" style="display:none;" type="file">
+            <input type="submit" value="Post">
+        </fieldset>
+    </form>
 
-<script src="/static/js/thread.js"></script>
+    <script src="/static/js/thread.js"></script>
 
 {% endblock %}
