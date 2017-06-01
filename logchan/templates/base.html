@@ -20,9 +20,9 @@
                     <ul>
                         {% for b in boards %}
                         {% if board and board.name == b.name %}
-                        <li class="currentBoard"><a href="/board/{{ b.name }}">{{ b.name }}</a></li>
+                        <li class="currentBoard"><a href="/{{ b.name }}">{{ b.name }}</a></li>
                         {% else %}
-                        <li><a href="/board/{{ b.name }}">{{ b.name }}</a></li>
+                        <li><a href="/{{ b.name }}">{{ b.name }}</a></li>
                         {% endif %}
                         {% endfor %}
                     </ul>
