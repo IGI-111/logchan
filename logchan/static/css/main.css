@@ -71,10 +71,11 @@ h1,h2,h3 {
 }
 
 
-.post_id {
+.post_id, .user_name {
     float: right;
     font-size: small;
     overflow: hidden;
+    margin-right: 1em;
 }
 
 #posts li:first-child {
