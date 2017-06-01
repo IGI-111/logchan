@@ -70,6 +70,13 @@ h1,h2,h3 {
     clear: both;
 }
 
+
+.post_id {
+    float: right;
+    font-size: small;
+    overflow: hidden;
+}
+
 #posts li:first-child {
     border-top: none;
 }
