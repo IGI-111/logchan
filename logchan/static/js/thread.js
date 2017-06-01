@@ -85,11 +85,22 @@ function toggleImage (e) {
   e.target.classList.toggle('full');
 }
 
+function respondToPost(e) {
+  e.preventDefault();
+  const postNumber = e.target.text;
+  const textarea = document.querySelector('#postForm textarea');
+  textarea.value += `>>${postNumber}\n`
+  textarea.focus();
+}
+
 function setupListeners() {
   document.querySelector('#postForm').addEventListener('submit', sendPostForm);
   document.querySelectorAll('#posts img').forEach(e => {
     e.addEventListener('click', toggleImage);
   });
+  document.querySelectorAll('.post_id').forEach(e => {
+    e.addEventListener('click', respondToPost);
+  })
 }
 
 document.addEventListener("DOMContentLoaded", setupListeners);

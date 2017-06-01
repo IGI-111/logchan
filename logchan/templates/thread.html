@@ -6,6 +6,7 @@
         <ul id="posts">
             {% for post in posts %}
                 <li>
+                    <a href="#" class="post_id">{{post.id}}</a>
                     {% if post.image %}
                         <img src="{{MEDIA_URL}}{{post.image.url}}" alt="{{post.id}}"/>
                     {% endif %}
