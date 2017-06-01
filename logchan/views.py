@@ -1,8 +1,35 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import TemplateView
+from rest_framework.renderers import JSONRenderer
+from rest_framework.parsers import JSONParser
+from rest_framework import status
 from .models import Board, Thread, Post
+from .api import grecaptcha_verify
+
+def post_thread(request):
+    # if not grecaptcha_verify(request):
+    #     return HttpResponse("Cannot validate captcha", status=400)
+
+    board = Board.objects.get(name=request.POST.get('board'))
+    thread = Thread(board=board, subject=request.POST.get('subject'))
+    thread.save()
+
+    image = {}
+    if 'image' in request.FILES:
+        image = request.FILES['image']
+
+    post = Post(
+            thread=thread,
+            date=request.POST.get('date'),
+            user_name=request.POST.get('user_name'),
+            image=image,
+            message=request.POST.get('message'))
+
+    post.save()
+
+    return HttpResponse('', status=201)
 
 def index(request):
     boards = Board.objects.all()

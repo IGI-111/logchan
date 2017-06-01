@@ -13,7 +13,7 @@
         </ul>
     </article>
 
-    <form id="threadForm" method="POST">
+    <form id="threadForm" method="POST" target="/post_thread">
         <fieldset>
             {% csrf_token %}
             <input name="board" type="hidden" value="{{board.name}}">

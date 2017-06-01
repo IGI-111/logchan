@@ -5,54 +5,29 @@ function sendThreadForm (e) {
 
   disableForm();
 
-  const threadData = new FormData();
-  threadData.set('board', CURRENT_BOARD);
-  threadData.set('subject', document.querySelector('#threadForm *[name=subject]').value);
+  const data = new FormData();
+  data.set('board', CURRENT_BOARD);
+  data.set('subject', document.querySelector('#threadForm *[name=subject]').value);
+  data.set('message', document.querySelector('#threadForm *[name=message]').value);
+  data.set('username', document.querySelector('#threadForm *[name=user_name]').value);
+  data.set('image', document.querySelector('#threadForm *[name=image]').files[0]);
+  data.set('g-recaptcha-response', document.querySelector('#threadForm *[name=g-recaptcha-response]').value);
+  data.set('csrfmiddlewaretoken', document.querySelector('#threadForm *[name=csrfmiddlewaretoken]').value);
 
-  const captcha = document.querySelector('#threadForm *[name=g-recaptcha-response]');
-  if(captcha) {
-    threadData.set('g-recaptcha-response', captcha.value);
-  }
-  threadData.set('csrfmiddlewaretoken', document.querySelector('#threadForm *[name=csrfmiddlewaretoken]').value);
-
-  const postData = new FormData();
-  postData.set('message', document.querySelector('#threadForm *[name=message]').value);
-  postData.set('username', document.querySelector('#threadForm *[name=user_name]').value);
-  postData.set('image', document.querySelector('#threadForm *[name=image]').files[0]);
-
-  const postCaptcha = document.querySelector('#threadForm *[name=g-recaptcha-response]');
-  if(postCaptcha) {
-    postData.set('g-recaptcha-response', postCaptcha.value);
-  }
-  postData.set('csrfmiddlewaretoken', document.querySelector('#threadForm *[name=csrfmiddlewaretoken]').value);
-
-  const threadRequest = new XMLHttpRequest();
-  threadRequest.onreadystatechange = () => {
-    if (threadRequest.readyState === XMLHttpRequest.DONE && threadRequest.status === 201) {
-      const threadId = JSON.parse(threadRequest.response).id;
-      postData.set('thread', threadId);
-
-      // now post the OP
-      const postRequest = new XMLHttpRequest();
-      postRequest.onreadystatechange = () => {
+  const request = new XMLHttpRequest();
+  request.onreadystatechange = () => {
+    if (request.readyState === XMLHttpRequest.DONE && request.status === 201) {
         enableForm();
-        if(postRequest.readyState === XMLHttpRequest.DONE && postRequest.status === 201) {
           reloadThreads();
 
           // redirect to thread
           window.location.href = `/board/${CURRENT_BOARD}/thread/${threadId}/`;
-        } else if(postRequest.readyState === XMLHttpRequest.DONE) {
-          displayError(postRequest.response);
-        }
-      }
-      postRequest.open('POST', '/api/post/', true);
-      postRequest.send(postData);
-    } else if(threadRequest.readyState === XMLHttpRequest.DONE) {
-      displayError(threadRequest.response);
+    } else if(request.readyState === XMLHttpRequest.DONE) {
+      displayError(request.response);
     }
   };
-  threadRequest.open('POST', '/api/thread/', true);
-  threadRequest.send(threadData);
+  request.open('POST', '/post_thread/', true);
+  request.send(data);
 }
 
 function reloadThreads() {
@@ -79,7 +54,7 @@ function updateThreadDisplay(threads){
     const node = document.createElement('li');
 
     const a = document.createElement('a');
-    a.setAttribute('href', `thread/${thread.id}`);
+    a.setAttribute('href', `${thread.id}`);
     const subject = document.createTextNode(thread.subject);
     a.appendChild(subject);
     node.appendChild(a);
