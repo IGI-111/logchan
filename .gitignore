@@ -5,3 +5,5 @@ staticfiles
 db.sqlite3
 *.png
 gettingstarted/media
+*.log
+logchan/migrations/*_auto*
