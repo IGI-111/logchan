@@ -159,3 +159,14 @@ article, form {
 .error {
     color: #ff3333;
 }
+
+.deletePost {
+    color: #FDFDFD;
+    background-color: #DD3333;
+    font-size: small;
+    float: right;
+    margin: 0 5px;
+    padding: 0 2px;
+    border-radius: 5px;
+    border: 2px solid #DD3333;    
+}
