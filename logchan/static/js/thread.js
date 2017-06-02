@@ -66,7 +66,7 @@ function updatePostDisplay(posts){
     node.appendChild(post_id);
 
     const user_name = document.createElement('span');
-    user_name.addClass('user_name');
+    user_name.classList.add('user_name');
     const user_name_text = document.createTextNode(post.user_name && post.user_name !== "" ?
       post.user_name :
       "Anonymous");
@@ -166,7 +166,6 @@ function setupListeners() {
   })
   if(document.querySelector('#deleteThreadForm')) {
     document.querySelector('#deleteThreadForm').addEventListener('submit', deleteThread);
-    document.querySelector('#deletePostForm').addEventListener('submit', removePost);
   }
 }
 
