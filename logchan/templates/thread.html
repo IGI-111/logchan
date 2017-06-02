@@ -56,11 +56,5 @@
     <input name="thread" type="hidden" value="{{thread.id}}">
     <input class="deleteButton" type="submit" value="Delete thread">
 </form>
-<form id="deletePostForm" style="display: none">
-{% csrf_token %}
-<input name="post" type="hidden">
-<input name="thread" type="hidden" value="{{thread.id}}">
-<input type="submit" value="Delete Post">
-</form>
 {% endif %}
 {% endblock %}

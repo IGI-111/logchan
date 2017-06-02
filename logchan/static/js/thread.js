@@ -1,13 +1,14 @@
 const CURRENT_THREAD = parseInt(document.querySelector("#postForm input[name=thread]").value);
 
+const IS_LOGGED_IN = document.querySelector("#deleteForm") == true;
+
 function sendPostForm (e) {
   e.preventDefault(); // stop form from submitting
 
   disableForm();
 
   const form = document.querySelector('#postForm');
-
-  const data = new FormData();
+const data = new FormData();
   data.set('thread', CURRENT_THREAD);
   data.set('message', document.querySelector('#postForm *[name=message]').value);
   data.set('user_name', document.querySelector('#postForm *[name=user_name]').value);
@@ -57,6 +58,30 @@ function updatePostDisplay(posts){
 
   posts.forEach(post => {
     const node = document.createElement('li');
+
+
+    const post_id = document.createElement('a');
+    const post_id_text = document.createTextNode(post.id);
+    post_id.appendChild(post_id_text);
+    node.appendChild(post_id);
+
+    const user_name = document.createElement('span');
+    user_name.addClass('user_name');
+    const user_name_text = document.createTextNode(post.user_name && post.user_name !== "" ?
+      post.user_name :
+      "Anonymous");
+    user_name.appendChild(user_name_text);
+    node.appendChild(user_name);
+
+    if(IS_LOGGED_IN){
+      const delete_button = document.createElement('button');
+      delete_button.addClass("deleteButton");
+      delete_button.addClass("deletePost");
+      delete_button.setAttribute("onclick", `submitDeletePostForm(${post.id})`);
+      const delete_button_text = document.createTextNode("Delete post");
+      delete_button.appendChild(delete_button_text);
+      node.appendChild(delete_button);
+    }
 
     if(post.image){
       const img = document.createElement('img');
