@@ -59,13 +59,6 @@ class ThreadByBoardViewSet(ThreadViewSet):
         serializer = ThreadSerializer(queryset, many=True, context={'request':request})
         return Response(serializer.data)
 
-    def create(self, request):
-        if request.user is not None and logchan_extras.is_in_group(request.user, "Admin") or (
-                grecaptcha_verify(request)):
-            return super(ThreadViewSet, self).create(request)
-        else:
-            return Response('Captcha not validated', status=status.HTTP_400_BAD_REQUEST)
-
     def retreive(self, request, board_pk=None):
         queryset = self.queryset.filter(board=board_pk)
         thread = get_object_or_404(queryset, board=board_pk)
@@ -96,4 +89,3 @@ class PostByThreadViewSet(PostViewSet):
         post = get_object_or_404(queryset, thread=thread_pk)
         serializer = ThreadSerializer(post, context={'request':request})
         return Response(serializer.data)
-
