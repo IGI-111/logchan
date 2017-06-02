@@ -6,8 +6,20 @@ from selenium.webdriver.support import expected_conditions as EC
 
 from logchan.models import Board, Thread, Post
 
+from django.contrib.auth import authenticate
+from django.contrib.auth.models import User, Group
+
+from logchan.models import Board, Thread, Post
+
 class SeleniumTest(LiveServerTestCase):
     def setUp(self):
+        self.username = 'admin'
+        self.password='imageboard'
+        u = User.objects.create_user(username=self.username, password=self.password)
+        u.save();
+        g = Group.objects.get_or_create(name='Admin')
+        g = Group.objects.get(name='Admin')
+        g.user_set.add(u)
         self.b = Board(name='Test_board')
         self.b.save()
         self.t = Thread(board=self.b, subject='Test_thread')
@@ -27,7 +39,7 @@ class SeleniumTest(LiveServerTestCase):
     #    self.driver.quit()
 
     def test_homepage(self):
-        self.assertTrue("Logchan" in self.driver.title)
+        self.assertTrue("Log(chan)" in self.driver.title)
 
     def test_board(self):
         first_board = self.driver.find_element_by_css_selector("nav a")
@@ -83,6 +95,6 @@ class SeleniumTest(LiveServerTestCase):
         self.driver.find_element_by_css_selector("nav a").click()
         self.assertEqual(True, False)
 
-
-
+    def test_login(self):
+        self.driver.get('{}/login'.format(self.baseurl))
 

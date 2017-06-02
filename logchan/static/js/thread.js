@@ -1,6 +1,6 @@
 const CURRENT_THREAD = parseInt(document.querySelector("#postForm input[name=thread]").value);
 
-const IS_LOGGED_IN = document.querySelector("#deleteForm") == true;
+const IS_LOGGED_IN = document.querySelector("#deleteThreadForm") != null;
 
 function sendPostForm (e) {
   e.preventDefault(); // stop form from submitting
@@ -8,7 +8,7 @@ function sendPostForm (e) {
   disableForm();
 
   const form = document.querySelector('#postForm');
-const data = new FormData();
+  const data = new FormData();
   data.set('thread', CURRENT_THREAD);
   data.set('message', document.querySelector('#postForm *[name=message]').value);
   data.set('user_name', document.querySelector('#postForm *[name=user_name]').value);
@@ -63,6 +63,7 @@ function updatePostDisplay(posts){
     const post_id = document.createElement('a');
     const post_id_text = document.createTextNode(post.id);
     post_id.appendChild(post_id_text);
+    post_id.classList.add('post_id');
     node.appendChild(post_id);
 
     const user_name = document.createElement('span');
@@ -75,12 +76,12 @@ function updatePostDisplay(posts){
 
     if(IS_LOGGED_IN){
       const delete_button = document.createElement('button');
-      delete_button.addClass("deleteButton");
-      delete_button.addClass("deletePost");
-      delete_button.setAttribute("onclick", `submitDeletePostForm(${post.id})`);
+      delete_button.classList.add("deleteButton");
+      delete_button.classList.add("deletePost");
       const delete_button_text = document.createTextNode("Delete post");
       delete_button.appendChild(delete_button_text);
       node.appendChild(delete_button);
+      delete_button.addEventListener("click", removePost);
     }
 
     if(post.image){
@@ -134,10 +135,12 @@ function deleteThread(e) {
   deleteRequest.send();
 }
 
-function removePost() {
-  const thread = document.querySelector("#deletePostForm *[name=thread]").value;
-  const post = document.querySelector("#deletePostForm *[name=post]").value;
-  const csrftoken = document.querySelector('#deletePostForm *[name=csrfmiddlewaretoken]').value;
+function removePost(e) {
+  e.preventDefault();
+  const thread = CURRENT_THREAD;
+  console.log(e);
+  const post = e.target.parentElement.querySelector(".post_id").text;
+  const csrftoken = document.querySelector('#postForm *[name=csrfmiddlewaretoken]').value;
 
   const deleteRequest = new XMLHttpRequest();
   deleteRequest.onreadystatechange = () => {
@@ -151,11 +154,6 @@ function removePost() {
   deleteRequest.send();
 }
 
-function submitDeletePostForm(postId) {
-  document.querySelector('#deletePostForm *[name=post]').value = postId;
-  removePost();
-}
-
 function setupListeners() {
   document.querySelector('#postForm').addEventListener('submit', sendPostForm);
   document.querySelectorAll('#posts img').forEach(e => {
@@ -164,8 +162,11 @@ function setupListeners() {
   document.querySelectorAll('.post_id').forEach(e => {
     e.addEventListener('click', respondToPost);
   })
-  if(document.querySelector('#deleteThreadForm')) {
+  if (IS_LOGGED_IN) {
     document.querySelector('#deleteThreadForm').addEventListener('submit', deleteThread);
+    document.querySelectorAll('.deletePost').forEach(e => {
+      e.addEventListener('click', removePost);
+    })
   }
 }
 
