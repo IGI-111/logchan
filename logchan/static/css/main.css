@@ -9,6 +9,7 @@ header {
     text-align: center;
     position: fixed;
     top: auto;
+    left: 20px;
 }
 
 header h1 {
@@ -45,7 +46,7 @@ article {
     padding: 2em;
     margin:1em auto;
     max-width:40em;
-    min-height: 40em;
+    min-height: 300px;
     background-color: #FEFEFE;
     clear: both;
 }
@@ -181,4 +182,8 @@ button, .fileLabel, form textarea, input {
     text-align: center;
     box-shadow: initial;
     margin-bottom: 10px;
+}
+
+#frontpage {
+    text-align: center;
 }
