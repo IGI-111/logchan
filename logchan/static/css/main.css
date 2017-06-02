@@ -42,11 +42,11 @@ header nav a {
 }
 
 article {
+    padding: 2em;
     margin:1em auto;
     max-width:40em;
+    min-height: 40em;
     background-color: #FEFEFE;
-    padding-left: 2em;
-    padding-right: 2em;
     clear: both;
 }
 
@@ -91,10 +91,6 @@ h1,h2,h3 {
     font-size: small;
     overflow: hidden;
     margin-right: 1em;
-}
-
-#posts li:first-child {
-    border-top: none;
 }
 
 #posts li img {

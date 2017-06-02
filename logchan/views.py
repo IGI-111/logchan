@@ -6,7 +6,8 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
 from rest_framework import status
 from .models import Board, Thread, Post
-from .api import grecaptcha_verify
+from .api.viewsets import grecaptcha_verify
+from .templatetags import logchan_extras
 
 def post_thread(request):
     if not (request.user is not None and logchan_extras.is_in_group(request.user, "Admin")) or (

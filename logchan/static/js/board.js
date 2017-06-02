@@ -11,7 +11,10 @@ function sendThreadForm (e) {
   data.set('message', document.querySelector('#threadForm *[name=message]').value);
   data.set('username', document.querySelector('#threadForm *[name=user_name]').value);
   data.set('image', document.querySelector('#threadForm *[name=image]').files[0]);
-  data.set('g-recaptcha-response', document.querySelector('#threadForm *[name=g-recaptcha-response]').value);
+  const captcha = document.querySelector('#threadForm *[name=g-recaptcha-response]');
+  if (captcha) {
+    data.set('g-recaptcha-response', captcha.value);
+  }
   data.set('csrfmiddlewaretoken', document.querySelector('#threadForm *[name=csrfmiddlewaretoken]').value);
 
   const request = new XMLHttpRequest();
