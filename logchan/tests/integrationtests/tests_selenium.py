@@ -3,6 +3,8 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from django.contrib.auth import authenticate
+from django.contrib.auth.models import User, Group
 
 from logchan.models import Board, Thread, Post
 
@@ -13,6 +15,9 @@ from logchan.models import Board, Thread, Post
 
 class SeleniumTest(LiveServerTestCase):
     def setUp(self):
+        self.driver = webdriver.PhantomJS()
+        self.baseurl = "http://127.0.0.1:8081/"
+
         self.username = 'admin'
         self.password='imageboard'
         u = User.objects.create_user(username=self.username, password=self.password)
@@ -20,6 +25,15 @@ class SeleniumTest(LiveServerTestCase):
         g = Group.objects.get_or_create(name='Admin')
         g = Group.objects.get(name='Admin')
         g.user_set.add(u)
+
+        self.driver.get(self.baseurl + 'login')
+        username_field = self.driver.find_element_by_css_selector("form input[name=username]")
+        username_field.send_keys(self.username)
+        password_field = self.driver.find_element_by_css_selector("form input[name=password]")
+        password_field.send_keys(self.password)
+        submit = self.driver.find_element_by_css_selector("form input[type=submit]")
+        submit.click()
+
         self.b = Board(name='Test_board')
         self.b.save()
         self.t = Thread(board=self.b, subject='Test_thread')
@@ -29,8 +43,6 @@ class SeleniumTest(LiveServerTestCase):
         self.p = Post(thread=self.t, message="New message test")
         self.p.save()
 
-        self.driver = webdriver.PhantomJS()
-        self.baseurl = "http://127.0.0.1:8081/"
         self.driver.get(self.baseurl)
         super(SeleniumTest, self).setUp
 
@@ -52,13 +64,10 @@ class SeleniumTest(LiveServerTestCase):
         first_board = self.driver.find_element_by_css_selector("nav a")
         board_name = '{}'.format(first_board.text)
         first_board.click()
-        first_thread = self.driver.find_element_by_class_name("main-container")
-        first_thread = first_thread.find_element_by_css_selector("article ul a")
+        self.driver.save_screenshot('/tmp/screen.png');
+        first_thread = self.driver.find_element_by_css_selector("section article ul li a")
         thread_name = first_thread.text
         first_thread.click()
-
-        self.assertTrue("board" in self.driver.current_url)
-        self.assertTrue("thread" in self.driver.current_url)
         t = Thread.objects.get(board=Board.objects.get(name=board_name), 
             subject=thread_name)
         self.assertTrue('{}'.format(t.id) in self.driver.current_url)
@@ -72,14 +81,14 @@ class SeleniumTest(LiveServerTestCase):
         self.assertEqual(self.p.message, post.text)
 
     def test_new_post(self):
-        self.driver.get('{}board/{}/thread/{}/'.format(self.baseurl, 
+        self.driver.get('{}/{}/{}/'.format(self.baseurl, 
             self.b.name, self.tt.id))
         field = self.driver.find_element_by_name("message")
         message = "A new message"
         field.send_keys(message)
         sub = self.driver.find_element_by_id("postForm").find_element_by_css_selector("input[type=submit]")
         sub.click()
-        self.driver.find_element_by_id("postForm").find_element_by_css_selector("input[type=submit]").screenshot("screen.png")
+        self.driver.find_element_by_id("postForm").find_element_by_css_selector("input[type=submit]")
         print(Post.objects.all())
 
         self.driver.get(self.baseurl)
