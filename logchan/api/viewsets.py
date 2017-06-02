@@ -61,7 +61,7 @@ class PostViewSet(viewsets.ModelViewSet):
     def create(self, request):
         if request.user is not None and logchan_extras.is_in_group(request.user, "Admin") or (
                 grecaptcha_verify(request)):
-            return super(ThreadViewSet, self).create(request)
+            return super(PostViewSet, self).create(request)
         else:
             return Response('Captcha not validated', status=status.HTTP_400_BAD_REQUEST)
 

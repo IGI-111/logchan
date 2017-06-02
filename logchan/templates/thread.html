@@ -15,6 +15,9 @@
                         Anonymous
                     {% endif %}
                     </span>
+                    {% if user|is_in_group:"Admin" or user|is_in_group:"Mod" %}
+                    <button onclick="submitDeletePostForm({{ post.id }})">Delete post</button>
+                    {% endif %}
                     {% if post.image %}
                         <img src="{{MEDIA_URL}}{{post.image.url}}" alt="{{post.id}}"/>
                     {% endif %}
@@ -56,5 +59,13 @@
     </fieldset>
 </form>
 </article>
+<form id="deletePostForm" style="display: none">
+<fieldset>
+    {% csrf_token %}
+    <input name="post" type="hidden">
+    <input name="thread" type="hidden" value="{{thread.id}}">
+    <input type="submit" value="Delete Post">
+</fieldset>
+</form>
 {% endif %}
 {% endblock %}

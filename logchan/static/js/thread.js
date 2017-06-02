@@ -88,19 +88,6 @@ function respondToPost(e) {
   textarea.focus();
 }
 
-function setupListeners() {
-  document.querySelector('#postForm').addEventListener('submit', sendPostForm);
-  document.querySelectorAll('#posts img').forEach(e => {
-    e.addEventListener('click', toggleImage);
-  });
-  document.querySelectorAll('.post_id').forEach(e => {
-    e.addEventListener('click', respondToPost);
-  })
-  document.querySelector('#deleteThreadForm').addEventListener('submit', deleteThread);
-}
-
-document.addEventListener("DOMContentLoaded", setupListeners);
-
 function deleteThread(e) {
   e.preventDefault();    // stop form from submitting
   if(!confirm("Do you really want to delete this thread ?")) {
@@ -121,3 +108,40 @@ function deleteThread(e) {
   deleteRequest.setRequestHeader("X-CSRFToken", csrftoken);
   deleteRequest.send();
 }
+
+function removePost() {
+  const thread = document.querySelector("#deletePostForm *[name=thread]").value;
+  const post = document.querySelector("#deletePostForm *[name=post]").value;
+  const csrftoken = document.querySelector('#deletePostForm *[name=csrfmiddlewaretoken]').value;
+
+  const deleteRequest = new XMLHttpRequest();
+  deleteRequest.onreadystatechange = () => {
+    if (deleteRequest.readyState === XMLHttpRequest.DONE && deleteRequest.status === 204) {
+      window.location.reload();
+    }
+  };
+  const url = '/api/post/' + post + '/';
+  deleteRequest.open('DELETE', url, true);
+  deleteRequest.setRequestHeader("X-CSRFToken", csrftoken);
+  deleteRequest.send();
+}
+
+function submitDeletePostForm(postId) {
+  document.querySelector('#deletePostForm *[name=post]').value = postId;
+  removePost();
+}
+
+function setupListeners() {
+  document.querySelector('#postForm').addEventListener('submit', sendPostForm);
+  document.querySelectorAll('#posts img').forEach(e => {
+    e.addEventListener('click', toggleImage);
+  });
+  document.querySelectorAll('.post_id').forEach(e => {
+    e.addEventListener('click', respondToPost);
+  })
+  document.querySelector('#deleteThreadForm').addEventListener('submit', deleteThread);
+  document.querySelector('#deletePostForm').addEventListener('submit', removePost);
+}
+
+document.addEventListener("DOMContentLoaded", setupListeners);
+
