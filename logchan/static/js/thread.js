@@ -117,7 +117,7 @@ function removePost() {
   const deleteRequest = new XMLHttpRequest();
   deleteRequest.onreadystatechange = () => {
     if (deleteRequest.readyState === XMLHttpRequest.DONE && deleteRequest.status === 204) {
-      window.location.reload();
+      reloadPosts();
     }
   };
   const url = '/api/post/' + post + '/';
@@ -139,8 +139,10 @@ function setupListeners() {
   document.querySelectorAll('.post_id').forEach(e => {
     e.addEventListener('click', respondToPost);
   })
-  document.querySelector('#deleteThreadForm').addEventListener('submit', deleteThread);
-  document.querySelector('#deletePostForm').addEventListener('submit', removePost);
+  if(document.querySelector('#deleteThreadForm')) {
+    document.querySelector('#deleteThreadForm').addEventListener('submit', deleteThread);
+    document.querySelector('#deletePostForm').addEventListener('submit', removePost);
+  }
 }
 
 document.addEventListener("DOMContentLoaded", setupListeners);

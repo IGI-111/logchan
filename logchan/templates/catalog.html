@@ -36,14 +36,10 @@
 
 {% block management %}
 {% if user|is_in_group:"Admin" %}
-<article>
-<form id="deleteBoardForm">
-    <fieldset>
-        {% csrf_token %}
-        <input name="board" type="hidden" value="{{board.name}}">
-        <input type="submit" value="Delete board">
-    </fieldset>
+<form class="deleteForm" id="deleteBoardForm">
+    {% csrf_token %}
+    <input name="board" type="hidden" value="{{board.name}}">
+    <input class="deleteButton" type="submit" value="Delete board">
 </form>
-</article>
 {% endif %}
 {% endblock %}

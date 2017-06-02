@@ -110,6 +110,11 @@ h1,h2,h3 {
     transition-duration: 1s;
 }
 
+#postForm input, #postForm .fileLabel, 
+#threadForm input, #threadForm .fileLabel {
+    color: #666666;
+}
+
 #postForm, #threadForm {
     width: 440px;
     margin: auto;
@@ -122,9 +127,8 @@ h1,h2,h3 {
 }
 
 form textarea{
-    width: 100%;
     min-height: 100px;
-
+    width: 98%;
 }
 
 form .g-recaptcha {
@@ -161,12 +165,24 @@ article, form {
 }
 
 .deletePost {
-    color: #FDFDFD;
-    background-color: #DD3333;
     font-size: small;
     float: right;
     margin: 0 5px;
     padding: 0 2px;
+}
+
+button, .fileLabel, form textarea, input {
     border-radius: 5px;
+}
+
+.deleteButton {
+    color: #FDFDFD;
+    background-color: #DD3333;
     border: 2px solid #DD3333;    
+}
+
+.deleteForm {
+    text-align: center;
+    box-shadow: initial;
+    margin-bottom: 10px;
 }
