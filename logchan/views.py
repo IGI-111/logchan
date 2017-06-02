@@ -10,8 +10,7 @@ from .api.viewsets import grecaptcha_verify
 from .templatetags import logchan_extras
 
 def post_thread(request):
-    if not (request.user is not None and logchan_extras.is_in_group(request.user, "Admin")) or (
-            not grecaptcha_verify(request)):
+    if not ((request.user is not None and logchan_extras.is_in_group(request.user, 'Admin')) or (grecaptcha_verify(request))):
         return HttpResponse("Cannot validate captcha", status=400)
 
     board = Board.objects.get(name=request.POST.get('board'))
