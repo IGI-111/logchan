@@ -12,6 +12,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.models import User, Group
 
 from logchan.models import Board, Thread, Post
+import time
 
 class SeleniumTest(LiveServerTestCase):
     def setUp(self):
@@ -82,16 +83,28 @@ class SeleniumTest(LiveServerTestCase):
     def test_new_post(self):
         self.driver.get('{}{}/{}/'.format(self.baseurl, 
             self.b.name, self.tt.id))
+        while True:
+            print '\nChecking if {} page is loaded.'.format(self.driver.current_url)
+            page_state = self.driver.execute_script('return document.readyState;')
+            if page_state == 'complete':
+                break
+        print 'Page loaded pursuing test...\n'
+        message = "A new message"
+
         form = self.driver.find_element_by_id('postForm')
         field = form.find_element_by_name("message")
-        message = "A new message"
         field.send_keys(message)
         sub = form.find_element_by_css_selector("input[type=submit]")
+        self.driver.save_screenshot('/tmp/screen1.png')
         sub.click()
-        #js = 'document.querySelector("#postForm").submit()'
+        #js = 'document.querySelector("#postForm").submit();'
         #self.driver.execute_script(js)
+        time.sleep(10)
+        logs = self.driver.get_log('har')
+        print logs
         print(Post.objects.all())
-        self.driver.save_screenshot('/tmp/screen.png')
+        self.driver.save_screenshot('/tmp/screen2.png')
+
         self.assertEqual(True, False)
         self.driver.get(self.baseurl)
         self.driver.get('{}{}/{}/'.format(self.baseurl, 
