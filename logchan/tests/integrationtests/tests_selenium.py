@@ -64,7 +64,6 @@ class SeleniumTest(LiveServerTestCase):
         first_board = self.driver.find_element_by_css_selector("nav a")
         board_name = '{}'.format(first_board.text)
         first_board.click()
-        self.driver.save_screenshot('/tmp/screen.png');
         first_thread = self.driver.find_element_by_css_selector("section article ul li a")
         thread_name = first_thread.text
         first_thread.click()
@@ -73,25 +72,29 @@ class SeleniumTest(LiveServerTestCase):
         self.assertTrue('{}'.format(t.id) in self.driver.current_url)
 
     def test_post_get(self):
-        self.driver.get('{}board/{}/thread/{}/'.format(self.baseurl, 
+        self.driver.get('{}{}/{}/'.format(self.baseurl, 
             self.b.name, self.t.id))
-        post = self.driver.find_element_by_class_name("main-container")
-        post = post.find_element_by_id("posts")
-        post = post.find_element_by_css_selector("li")
-        self.assertEqual(self.p.message, post.text)
+        post = self.driver.find_element_by_id('posts')
+        post = post.find_element_by_css_selector('li')
+        l = post.find_elements_by_css_selector('p')
+        self.assertTrue(self.p.message in post.text)#find_element_by_css_selector('p'))
 
     def test_new_post(self):
-        self.driver.get('{}/{}/{}/'.format(self.baseurl, 
+        self.driver.get('{}{}/{}/'.format(self.baseurl, 
             self.b.name, self.tt.id))
-        field = self.driver.find_element_by_name("message")
+        form = self.driver.find_element_by_id('postForm')
+        field = form.find_element_by_name("message")
         message = "A new message"
         field.send_keys(message)
-        sub = self.driver.find_element_by_id("postForm").find_element_by_css_selector("input[type=submit]")
+        sub = form.find_element_by_css_selector("input[type=submit]")
         sub.click()
-        self.driver.find_element_by_id("postForm").find_element_by_css_selector("input[type=submit]")
         print(Post.objects.all())
-
         self.driver.get(self.baseurl)
+        self.driver.get('{}{}/{}/'.format(self.baseurl, 
+            self.b.name, self.tt.id))
+        self.driver.save_screenshot('/tmp/screen.png')
+        self.assertEqual(True, False)
+
         self.driver.find_element_by_css_selector("nav a").click()
         self.driver.find_element_by_css_selector("article ul a").click()
         print(self.driver.current_url)
@@ -105,5 +108,11 @@ class SeleniumTest(LiveServerTestCase):
         self.assertEqual(True, False)
 
     def test_login(self):
-        self.driver.get('{}/login'.format(self.baseurl))
+        self.driver.get(self.baseurl + 'login')
+        username_field = self.driver.find_element_by_css_selector("form input[name=username]")
+        username_field.send_keys(self.username)
+        password_field = self.driver.find_element_by_css_selector("form input[name=password]")
+        password_field.send_keys(self.password)
+        submit = self.driver.find_element_by_css_selector("form input[type=submit]")
+        submit.click()
 
