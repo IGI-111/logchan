@@ -88,12 +88,14 @@ class SeleniumTest(LiveServerTestCase):
         field.send_keys(message)
         sub = form.find_element_by_css_selector("input[type=submit]")
         sub.click()
+        #js = 'document.querySelector("#postForm").submit()'
+        #self.driver.execute_script(js)
         print(Post.objects.all())
+        self.driver.save_screenshot('/tmp/screen.png')
+        self.assertEqual(True, False)
         self.driver.get(self.baseurl)
         self.driver.get('{}{}/{}/'.format(self.baseurl, 
             self.b.name, self.tt.id))
-        self.driver.save_screenshot('/tmp/screen.png')
-        self.assertEqual(True, False)
 
         self.driver.find_element_by_css_selector("nav a").click()
         self.driver.find_element_by_css_selector("article ul a").click()
@@ -115,4 +117,10 @@ class SeleniumTest(LiveServerTestCase):
         password_field.send_keys(self.password)
         submit = self.driver.find_element_by_css_selector("form input[type=submit]")
         submit.click()
+
+        self.driver.get(self.baseurl)
+        header = self.driver.find_element_by_css_selector('header')
+        p = header.find_element_by_css_selector('p')
+        user = p.find_element_by_css_selector('b')
+        self.assertEqual(self.username, user.text)
 
