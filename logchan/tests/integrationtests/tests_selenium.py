@@ -80,47 +80,43 @@ class SeleniumTest(LiveServerTestCase):
         l = post.find_elements_by_css_selector('p')
         self.assertTrue(self.p.message in post.text)#find_element_by_css_selector('p'))
 
-    def test_new_post(self):
-        self.driver.get('{}{}/{}/'.format(self.baseurl, 
-            self.b.name, self.tt.id))
-        while True:
-            print '\nChecking if {} page is loaded.'.format(self.driver.current_url)
-            page_state = self.driver.execute_script('return document.readyState;')
-            if page_state == 'complete':
-                break
-        print 'Page loaded pursuing test...\n'
-        message = "A new message"
+#   def test_new_post(self):
+#       self.driver.get('{}{}/{}/'.format(self.baseurl, 
+#           self.b.name, self.tt.id))
+#       while True:
+#           print '\nChecking if {} page is loaded.'.format(self.driver.current_url)
+#           page_state = self.driver.execute_script('return document.readyState;')
+#           if page_state == 'complete':
+#               break
+#       print 'Page loaded pursuing test...\n'
+#       message = "A new message"
 
-        form = self.driver.find_element_by_id('postForm')
-        field = form.find_element_by_name("message")
-        field.send_keys(message)
-        sub = form.find_element_by_css_selector("input[type=submit]")
-        self.driver.save_screenshot('/tmp/screen1.png')
-        sub.click()
-        #js = 'document.querySelector("#postForm").submit();'
-        #self.driver.execute_script(js)
-        time.sleep(10)
-        logs = self.driver.get_log('har')
-        print logs
-        print(Post.objects.all())
-        self.driver.save_screenshot('/tmp/screen2.png')
+#       form = self.driver.find_element_by_id('postForm')
+#       field = form.find_element_by_name("message")
+#       field.send_keys(message)
+#       sub = form.find_element_by_css_selector("input[type=submit]")
+#       self.driver.save_screenshot('/tmp/screen1.png')
+#       sub.click()
+#       #js = 'document.querySelector("#postForm").submit();'
+#       #self.driver.execute_script(js)
+#       time.sleep(10)
+#       logs = self.driver.get_log('har')
+#       print logs
+#       print(Post.objects.all())
+#       self.driver.save_screenshot('/tmp/screen2.png')
 
-        self.assertEqual(True, False)
-        self.driver.get(self.baseurl)
-        self.driver.get('{}{}/{}/'.format(self.baseurl, 
-            self.b.name, self.tt.id))
+#       self.assertEqual(True, False)
+#       self.driver.get(self.baseurl)
+#       self.driver.get('{}{}/{}/'.format(self.baseurl, 
+#           self.b.name, self.tt.id))
 
-        self.driver.find_element_by_css_selector("nav a").click()
-        self.driver.find_element_by_css_selector("article ul a").click()
-        print(self.driver.current_url)
-        post = self.driver.find_element_by_class_name("main-container")
-        post = post.find_element_by_id("posts")
-        post = post.find_element_by_css_selector("li")
-        self.assertEqual(message, post.text)
-
-    def test_new_thread(self):
-        self.driver.find_element_by_css_selector("nav a").click()
-        self.assertEqual(True, False)
+#       self.driver.find_element_by_css_selector("nav a").click()
+#       self.driver.find_element_by_css_selector("article ul a").click()
+#       print(self.driver.current_url)
+#       post = self.driver.find_element_by_class_name("main-container")
+#       post = post.find_element_by_id("posts")
+#       post = post.find_element_by_css_selector("li")
+#       self.assertEqual(message, post.text)
 
     def test_login(self):
         self.driver.get(self.baseurl + 'login')

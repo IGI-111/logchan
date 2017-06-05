@@ -38,14 +38,25 @@ def grecaptcha_verify(request):
 class BoardViewSet(viewsets.ModelViewSet):
     queryset = Board.objects.all()
     serializer_class = BoardSerializer
-    def delete(self, request, *args, **kwargs):
-        return self.destroy(request, *args, **kwargs)
+    def destroy(self, request, *args, **kwargs):
+        if request.user is not None and logchan_extras.is_in_group(request.user, "Admin"):
+            return super(BoardViewSet, self).destroy(request, *args, **kwargs)
+        else:
+            return Response('User don\'t have right to delete board', status=status.HTTP_400_BAD_REQUEST)
+    def create(self, request):
+        if request.user is not None and logchan_extras.is_in_group(request.user, "Admin"):
+            return super(BoardViewSet, self).create(request)
+        else:
+            return Response('Only admin can create board', status=status.HTTP_400_BAD_REQUEST)
 
 class ThreadViewSet(viewsets.ModelViewSet):
     queryset = Thread.objects.all()
     serializer_class = ThreadSerializer
-    def delete(self, request, *args, **kwargs):
-        return self.destroy(request, *args, **kwargs)
+    def destroy(self, request, *args, **kwargs):
+        if request.user is not None and logchan_extras.is_in_group(request.user, "Admin"):
+            return super(ThreadViewSet, self).destroy(request, *args, **kwargs)
+        else:
+            return Response('User don\'t have right to delete thread', status=status.HTTP_400_BAD_REQUEST)
 
     def create(self, request):
         if request.user is not None and logchan_extras.is_in_group(request.user, "Admin") or (
@@ -68,8 +79,11 @@ class ThreadByBoardViewSet(ThreadViewSet):
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    def delete(self, request, *args, **kwargs):
-        return self.destroy(request, *args, **kwargs)
+    def destroy(self, request, *args, **kwargs):
+        if request.user is not None and logchan_extras.is_in_group(request.user, "Admin"):
+            return super(PostViewSet, self).destroy(request, *args, **kwargs)
+        else:
+            return Response('User don\'t have right to delete post', status=status.HTTP_400_BAD_REQUEST)
 
     def create(self, request):
         if request.user is not None and logchan_extras.is_in_group(request.user, "Admin") or (
