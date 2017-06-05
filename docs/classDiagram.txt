@@ -1,6 +1,7 @@
 @startuml
 class Board {
     {static} pk_name
+    description
 }
 
 class Thread {

@@ -15,10 +15,10 @@ Anonymous -> (Select board)
 (Select board) .> (Select thread) : extends
 
 (Select thread) .up-> (Add post) : extends
-(Select thread) .> (Delete post) : extends
 
 rectangle Authenticated {
     Moderator -> (Delete thread)
+    Moderator -> (Delete post)
     Administrator -> (Add board)
     Administrator -> (Delete board)
 }
