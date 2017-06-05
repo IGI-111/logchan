@@ -1,0 +1,1551 @@
+[
+{
+  "model": "contenttypes.contenttype",
+  "pk": 1,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 2,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 3,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 4,
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 5,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 6,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "logchan",
+    "model": "board"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 8,
+  "fields": {
+    "app_label": "logchan",
+    "model": "thread"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "logchan",
+    "model": "post"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "7ig0noitmbzvxgrd6xug1e2xzf01lccr",
+  "fields": {
+    "session_data": "ODg4YzFmNjQ4OTAyMjhiNmVjMjliOGVlYjZmYTE5YmM2ZGIyNmIxNjp7Il9hdXRoX3VzZXJfaGFzaCI6IjNjYWNjYmJmZGMwZTY5Y2Y2NmE5ZjM5NmVmOGE2YWRmYjZkNmQ1ZWYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=",
+    "expire_date": "2017-06-16T13:14:19.577Z"
+  }
+},
+{
+  "model": "logchan.board",
+  "pk": "diy",
+  "fields": {
+    "description": "Do It Yourself"
+  }
+},
+{
+  "model": "logchan.board",
+  "pk": "lit",
+  "fields": {
+    "description": "Literature"
+  }
+},
+{
+  "model": "logchan.board",
+  "pk": "music",
+  "fields": {
+    "description": "Musical and Audible Media"
+  }
+},
+{
+  "model": "logchan.board",
+  "pk": "sec",
+  "fields": {
+    "description": "Computer security"
+  }
+},
+{
+  "model": "logchan.board",
+  "pk": "tech",
+  "fields": {
+    "description": "Technology"
+  }
+},
+{
+  "model": "logchan.thread",
+  "pk": 1,
+  "fields": {
+    "board": "tech",
+    "subject": "Intel core i9"
+  }
+},
+{
+  "model": "logchan.thread",
+  "pk": 2,
+  "fields": {
+    "board": "tech",
+    "subject": "Crypto Coin General"
+  }
+},
+{
+  "model": "logchan.thread",
+  "pk": 3,
+  "fields": {
+    "board": "tech",
+    "subject": "Operating Systems"
+  }
+},
+{
+  "model": "logchan.thread",
+  "pk": 4,
+  "fields": {
+    "board": "tech",
+    "subject": "Beat time"
+  }
+},
+{
+  "model": "logchan.thread",
+  "pk": 5,
+  "fields": {
+    "board": "tech",
+    "subject": "Search Engines"
+  }
+},
+{
+  "model": "logchan.thread",
+  "pk": 6,
+  "fields": {
+    "board": "tech",
+    "subject": "BSD"
+  }
+},
+{
+  "model": "logchan.thread",
+  "pk": 7,
+  "fields": {
+    "board": "tech",
+    "subject": "144hz monitors"
+  }
+},
+{
+  "model": "logchan.thread",
+  "pk": 8,
+  "fields": {
+    "board": "tech",
+    "subject": "Desktop programming"
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 1,
+  "fields": {
+    "thread": 1,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "images/intel.jpg",
+    "message": "Is it worth it?"
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 2,
+  "fields": {
+    "thread": 1,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "I heard it has 18 cores and 36 threads, it's like a silicium monster"
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 3,
+  "fields": {
+    "thread": 1,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "This little metal square costs $1,999.\r\nPlease, think about the number of pizza slices you can buy with this amount of money."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 4,
+  "fields": {
+    "thread": 1,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "I'd rather buy a Xeon processor for this price."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 5,
+  "fields": {
+    "thread": 1,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "Xeons are not made for computer gaming though"
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 6,
+  "fields": {
+    "thread": 1,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "images/gaming.jpg",
+    "message": "Yeah, I think 5.7GHz would be enough to play Minecraft"
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 7,
+  "fields": {
+    "thread": 2,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "images/1493227388458.png",
+    "message": "Lets talk crypto coin!\r\nWith recent huge market movements and announcements from authorities (usa/japan) shaping a more positive future for crypto - is 2017 THE year!\r\n\r\n6 weeks ago crypto total market cap was $25 billion today we hit $31.7 billion - bit coin dominance was at 69% now only 66.2%\r\n\r\nIts Habberning!\r\nWhat coins do you think will head the charge and why?"
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 10,
+  "fields": {
+    "thread": 2,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "I don't have an easy way to buy crypto where I live, but I'm sure it will take off heavily if Android/iOS get a mainstream way to trade currency."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 11,
+  "fields": {
+    "thread": 2,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "Dash and Ethereum will be the lead. Dash is bitcoin but better in every way including speed, anonymity, and usage soon (i believe Dash Evolution will make it paypal simple) and Ethereum has so many Dapps being made on it with actual use cases like Golem for renting cpu usage for computation intensive tasks like rendering videos, Storj is moving to Ethereum (distributed DropBox alternative), and other more experimental tokens like the BAT (basic attention token from Brave to fix the advertisement industry online), ANT (aragon network token for running a company without paperwork) and SingularDTV tokens, as a new type of entertainment company."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 12,
+  "fields": {
+    "thread": 2,
+    "date": "2017-06-02",
+    "user_name": "Drifter",
+    "image": "",
+    "message": "Where do you live? Here in Switzerland the national railway company SBB (owned by the federal government) sells Bitcoin at every ticket machine in the country. Their ticket machines are pretty much in every municipality, so it's very accessible to almost everyone.\r\n\r\nWhile it's convenient, it's not very privacy respecting. You have to enter a swiss mobile number (which is always tied to a person) and the purchase must be made through bank card. Still better than buying online where you have to send your ID to some random ass company and trust them with it."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 14,
+  "fields": {
+    "thread": 2,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "does diversifying in various cryptos make sense? How likely is it that one will grow a lot and others will shrink and fail?"
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 15,
+  "fields": {
+    "thread": 2,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "BTC is still the best coin though"
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 16,
+  "fields": {
+    "thread": 2,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "Best how? What are the criteria? It has the highest value and most liquidity, both of which are a result of its popularity. This will lead into a sort of popularity feedback loop, at least for a while."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 17,
+  "fields": {
+    "thread": 2,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "What's the best way to get started investing in crypto-currency?  I want to get some XMR, LTC, and maybe XEM, and just hold onto them for a while until the value goes up."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 18,
+  "fields": {
+    "thread": 2,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "Wait before buying. The bitcoin bubble is about to collapse and will shrink price of crypto currency. 400$ in 2 days ."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 19,
+  "fields": {
+    "thread": 2,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "if you think Bitcoin is an investment bubble then I feel you are missing the point.\r\n\r\nSeriously $400 either way be dammed! - by 2020 you'll be wishing you brought in when it was only $3000!\r\n\r\nRecent crash looks fishy to me - huge sudden withdraws just as the EU and US ran into bank holidays, also at end of month so less free money for people - both these things would of made it harder for people to pile in as the prices dropped. Luckily the market is global and 24/7 so it just weathered it ok - now just 10days later we are near the peak again - this was not a correction this was a move!"
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 20,
+  "fields": {
+    "thread": 3,
+    "date": "2017-06-02",
+    "user_name": "OP",
+    "image": "images/debian.png",
+    "message": "What Operating System do/have you use/used and why?\r\n\r\nI've just started using Debian after using Arch for a few months after coming from Xubuntu.\r\n\r\nI enjoyed Xubuntu because it \"just werks\" and it was my foray into linux, learned a lot of surface knowledge from it. But with my package count approaching ~3k i was lured in my the minimalist allure of Arch & Gentoo, But with no processors fast enough to compile for Gentoo i went with Arch.\r\nIt was a lot of fun and i learned a ton of more under the hood stuff but it always felt a little \"cold\" in the comfy sense. But the low package count erection kept me going until i received an old HP laptop that wasn't liking Arch at all.\r\nI'd heard good things about Debian on old hardware so decided to give that a shot, Install was pretty painless except for some firmware and depository issues that weren't too hard to fix.\r\nAnd god damn me if i don't find Debian incredibly comfy even if i do still occasionally type \"pacman -Syu\" on accident."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 21,
+  "fields": {
+    "thread": 3,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "I've used debian because it just worked, then i switched to fedora because GPU driver updates.\r\nHaven't had any reason to switch so far. Whenever i have more free time/actually find a job, i will probably install gentoo for the learning process."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 22,
+  "fields": {
+    "thread": 3,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "images/1494470804555.png",
+    "message": "I use Manjaro. It has all the simplicity and minimalism of Arch with the \"it just works\" usability of Ubuntu. 10/10 would recommend to anyone looking for a new distro or Windows replacement."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 23,
+  "fields": {
+    "thread": 3,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "I'm using debian and I'm about to switch to gentoo hardened once the semester is over.\r\nI'm about to compile everything and get it librebooted on a core duo x200 thinkpad in the next 10 days before the summer session.\r\nI'll probably use the old 100gb hard drive to install open bsd on the to laptop I was using and give it to my little brother when he is ready for it.\r\nAm I fine for a efi partitioning scheme on a bios machine?\r\nI've used arch before debian and found it uncomfy and the opposite of minimalism, I've found myself using the same amount of ram and just a few hundred packages less. So I've didn't feel the need to keep using it and switched back to debian.\r\nBefore arch I distro hopped like crazy trying to find my niche distro."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 24,
+  "fields": {
+    "thread": 3,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "I use Gentoo because it's fun."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 26,
+  "fields": {
+    "thread": 3,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": ">Windows for vidya\r\n>Arch for everything else.\r\nI used Debian before Arch, but I really needed an up-to-date, bleeding-edge distro to use. And AUR is very, very useful.\r\nIt also requires a bit more effort to install than some other distros, so it was a little more fun to get up and running, especially as I hadn't used GNU/Linux for a particularly long time (maybe a year or so)."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 27,
+  "fields": {
+    "thread": 3,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "Why not Debian testing. That is fairly up to date(except during freeze).\r\n\r\nI started with Mandriva, then switched to Ubuntu, because Mandriva was having a memory leak. Now I am on Debian testing."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 28,
+  "fields": {
+    "thread": 3,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "Trisquel on the laptop but I'd love to get Parabola up on it if I can find the time and get the wifi to connect."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 29,
+  "fields": {
+    "thread": 3,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "Gentoo is my main OS.\r\nFreeBSD on my server.\r\nWindows for gaymes and music making/editing.\r\n\r\nCurrently playing around with NixOS a bit."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 30,
+  "fields": {
+    "thread": 3,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "Slackware for a number of reasons. I like how solid it is and how rarely it updates, cause I like to be able to set things up the way I like em and never have to change it unless I want to. I like aspects of the package management (although it still leaves certain things to be desired, which I might write up a fix for at some point). I also appreciate the lack of systemd."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 31,
+  "fields": {
+    "thread": 3,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "My first operating system was Windows 95\r\nIt was nice, but I wasn't really into computers. I switched to xp after that, I don't really know what year. I used so until windows 7 service pack 1 released. I experimented with other stuff through the years, but currently use Windows 7 still. My favorite non-windows Os is gentoo and freebsd.\r\nI want to use PS/2 or OS/2 but can't find an iso.\r\nOpenBSD and crux Linux are currently on my list to try too."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 32,
+  "fields": {
+    "thread": 3,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "I dual boot Manjaro and Windows 10 because\r\n>muh coding\r\n>muh games"
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 33,
+  "fields": {
+    "thread": 3,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "ubuntu 16.04 lts with unity. it's great on my x220, i really like unity and it just werks. no need to waste time on \"pro distros\", i'm just enjoying the soykaf out of it."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 34,
+  "fields": {
+    "thread": 3,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "I use Void linux and admittedly I'm punching way above my weight as I had great help from others to install it. Before this I had used ubuntu distros, distros based off ubuntu, and just recently Antergos which is based off Arch. I don't really know much about how to handle a Linux system but those past ones just werked with their nice installers and I never had many problems in my usage. I'd say I've been using Linux casually for 2-3 years now but never really bothered much with figuring out things. I switched to Void to fix a problem that was probably solvable but I figured installing a new OS is an easier solution and my friend helped me out and recommended Void. I really like Void so far. The xbps package manager is really amazing and I prefer it much to pacman and runit is simple to understand(that said I don't do anything more than what's default with it).\r\n\r\nThat said, I still feel like I know very little about Linux and how to do anything with my setup. So far I only know how to install them and once set up, I'll start just using them casually as I would with Windows."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 35,
+  "fields": {
+    "thread": 3,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "Mostly FreeBSD and OpenBSD because they work quite easily for programming and system administration.\r\nUnfortunately Debian GNU/Linux now as I'm studying for a cert. Debian comes with so much graphical stuff, yet absolutely NO programming stuff in the default install."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 36,
+  "fields": {
+    "thread": 3,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "Gentoo for desktop use.\r\nOpenBSD & HardenedBSD for server use as i really like Unix.\r\nSadly i need things that are better on Linux like virtualization with qemu/KVM."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 37,
+  "fields": {
+    "thread": 4,
+    "date": "2017-06-02",
+    "user_name": null,
+    "image": "images/1493753659292.png.jpeg",
+    "message": "So in the late 90's Swatch launched a line of clocks with normal time and internet time. Internet time or beat time divided the day in 1000 beats. It was a commercial failure.\r\nBack when it was first announced I remember being excited as fuarrrk about it, in '98 anything internet related was hype worthy. A pair of years ago when I started playing tabletop games online coordinating all players became an issue so a guy in our group linked us to a time zone converter and told us to set times in UTC time, it was useful but it reminded me of beat time for the first time in years.\r\n\r\nWhat do you guys think? Should it make a comeback?"
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 38,
+  "fields": {
+    "thread": 4,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "Something like this would be cool, but it shouldn't just be an arbitrary number. There should be some significance, like n units equals the average amount of time spent doing some common internet activity."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 39,
+  "fields": {
+    "thread": 4,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": ">Internet time or beat time divided the day in 1000 beats\r\n>What do you guys think? Should it make a comeback?\r\nFor what purpose? If the problem is potential AM/PM confusion then just use a 24 hour clock, since it's already a standard. Honestly I've spent so much time on imageboards that I set my watch and the clocks on my computers to use 24 hours.\r\n\r\nOn a side note, when it comes to \"internet time\", how much of a glitterboy would you be if your watch displayed Unix time?"
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 40,
+  "fields": {
+    "thread": 4,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "The point is that beat time had no time zones\r\nAt the moment this post is being written is @022 in all the world no matter the time zone and that is the point, being able to set times without the need of converting time zones or daylight saving times.\r\n\r\nAlso isn't unix time also affected by time zones?"
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 41,
+  "fields": {
+    "thread": 4,
+    "date": "2017-06-02",
+    "user_name": "Marly Krushkhova",
+    "image": "images/1493770170170.jpg",
+    "message": "There was a push to create a universal synchronized time a few years ago, but the conclusion was drawn that it would be too difficult for normal people to understand that you may work from 0000 to 0800 world time while someone else works from 1000 to 1600 (at the same time) and that the AM/PM and 24 hour systems already in place with time zones were too ingrained in society"
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 42,
+  "fields": {
+    "thread": 4,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "Time should be measured by the length of the news cycle. The time between when an event happens and when an event is common knowledge should be called one beat.\r\n\r\nIt would have to be a very fluid term, but within a given subculture it would be easily identifiable."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 43,
+  "fields": {
+    "thread": 4,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "Too difficult to define. What percentage of the population has to know before it becomes common knowledge? How much do they have to know? How would you even measure that?"
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 44,
+  "fields": {
+    "thread": 4,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "images/1494431141496.jpg",
+    "message": "Having the same clock all over the world would be a problem, basically you would still need to know your position in the globe because the current time would mean a different thing in another place"
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 45,
+  "fields": {
+    "thread": 4,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "i've got my wife a digital swatch lately and it turned out they still support .beat - kinda like that."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 46,
+  "fields": {
+    "thread": 4,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "my old swatch beat is has been strapped to my motorbike's hadlebar for some years now"
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 47,
+  "fields": {
+    "thread": 5,
+    "date": "2017-06-02",
+    "user_name": null,
+    "image": "images/1494651571015-0.jpg",
+    "message": "What search engine(s) do you use lainons?\r\n\r\nI use google for completely nonincriminating queries. \"How to set python recursion limit\", that sort of thing. I use bing for porn, it gets the best results as far as that goes. I realize it's not super private but I've been watching porn since I first got on the internet. Way, way before I became aware of privacy and security and data collection. So I'm sure they already have a comprehensive profile of my degenerate fetishes and there's no use trying to hide that anymore.\r\n\r\nThe rest of the time I use ddg, startpage, and searx.me. Startpage is a sort of a proxy for google's search. You get google's results and it's a way to avoid the filter bubble since searches aren't personalized. searx.me is a metasearch engine. How do they stack up for keeping your searches private? Finally, what do you guys think about yandex? It gives decent results but doesn't make any claims on being private afaik. However, it's a Russian company so it's not like they're going to hand over data to Western intelligence and law enforcement agencies right? What else is out there?\r\n"
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 48,
+  "fields": {
+    "thread": 5,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "I've been using Startpage for a while now."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 50,
+  "fields": {
+    "thread": 5,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "I use duckduckgo, google and yandex."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 51,
+  "fields": {
+    "thread": 5,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "I personnaly use qwant. It is a normal person oriented / open source french search engine.\r\nCancer aside (like their news pages) they're ok."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 52,
+  "fields": {
+    "thread": 6,
+    "date": "2017-06-02",
+    "user_name": null,
+    "image": "images/1493351062492.gif",
+    "message": "I noticed some people thought BSD wasn't modular. But Unix, and therefore BSD, is. It's made of so many pieces, which as you can see in a shell script, can be used very modularly. Unix is a collection of tools.\r\nBy the way, the BSDs often have cool innovations and features like ASLR and W^X. What BSD are you using?\r\nI prefer OpenBSD but I've been using FreeBSD the most lately due to having difficulties with some closed-source hardware, a video card.\r\nThe install for OpenBSD is super fast too, it occurs in minutes with just minor typing and hitting enter involved: the entire process is CLI, not even curses TUI.\r\n\r\nAlso, I'd be happy to see System V, Linux, Minix, GNU, and Hurd threads in the future. Unix is a fun paradigm."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 53,
+  "fields": {
+    "thread": 6,
+    "date": "2017-06-02",
+    "user_name": "Jane Doe",
+    "image": "",
+    "message": "Funny story about OpenBSD I can share: I once tried to install openbsd on my server and had to wrestle with the network connection setup for ~4hours. After that I installed gentoo on it in one go and was satisfied. The thing I don't like about the BSDs for my desktop is the fact that they contain things I don't use, OpenBSD is missing core functionality and is full of stuff I don't use versus my gentoo/funtoo setups which have just the things I want and use with just the settings I want. The minor command differences annoy me as well when I just want things up and running.\r\n\r\nI concede that OpenBSD is secure as heck BUT that is its drawback as well, due to the design of this secure system (through implementation rather than by principle).\r\n\r\nPeople say linux is just for servers but I think I'd like to redraw that line to OpenBSD. OpenBSD is the golden standard of secure servers but in desktop usage it has let me down severely (completely understandable for the type a system it is).\r\n\r\nI do hope GNU adopts tricks from the BSD teams, Pledge seems promising for one."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 54,
+  "fields": {
+    "thread": 6,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "Interesting. DHCP has worked for me each time.\r\n>OpenBSD is missing core functionality and is full of stuff I don't use versus my gentoo/funtoo setups which have just the things I want and use with just the settings I want.\r\nI have the opposite feeling whenever I use GNU/Linux distributions, which rarely come with ctags or a compiler, yet come with insane DE bloat. OpenBSD comes with so much, including an entire x.org install, yet fits on a CD. Not a DVD, but a CD.\r\nMay I ask what it is that OpenBSD is missing? What sort of bloat do you think OpenBSD has?\r\n>OpenBSD is the golden standard of secure servers but in desktop usage it has let me down severely (completely understandable for the type a system it is).\r\nMost OpenBSD developers use it as their desktop: I would too if I had compatible graphics. I do however, as said earlier, use FreeBSD as my desktop. What desktop programs is it lacking?"
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 55,
+  "fields": {
+    "thread": 6,
+    "date": "2017-06-02",
+    "user_name": "Cowboy",
+    "image": "",
+    "message": "I use OpenBSD on my laptop and its fantastic. bioctl is the best method of full disk encryption I have encountered. The fact that OpenBSD can still load with every part of the disk encrypted makes it automatically better than dm-crypt. bioctl is also much easier to use. Geli on Free/HardenedBSD also beats dm-crypt by a long shot but it lags a bit behind bioctl. The only thing I wish OpenBSD supported is ZFS. Maybe one-day once I get better at C I will help restart the porting effort.\r\n\r\nI also find HardenedBSD fantastic for mass storage devices/network appliances.\r\n\r\nCurrently I run gentoo on my desktop solely for the VGA-Passthrough feature of KVM. Support for this is being developed for bhyve and I will migrate my desktop over (probably to HardenedBSD) after it is completed."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 56,
+  "fields": {
+    "thread": 6,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "OpenBSD is by far my favorite operating system.\r\nIt has high standards for it's codebase, it is really easy to install, comes with anything I could possibly need (I do install third party software, but could perfectly do with a vanilla install), it is a consistent whole, and most importantly, it is a very simple system.\r\nHowever I do use FreeBSD in my lappy because wireless drivers."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 57,
+  "fields": {
+    "thread": 6,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "I have openbsd on an x201 to learn the differences in BSD to linix I really do quite like it its a very nice lightweight os\r\nI'm going to try freebsd on an old desktop box as a makeshift server"
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 58,
+  "fields": {
+    "thread": 6,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "I love openbsd but i'm stuck with freebsd because of nvidia optimus. I mean, freebsd is fine but it's just not what I want, I like simplicity more than vendor bloat. I wish I had the skills to code optimus support... It should be simple but the entry barrier for driver dev is pretty high."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 59,
+  "fields": {
+    "thread": 6,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "What do you think about HardenedBSD?"
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 60,
+  "fields": {
+    "thread": 7,
+    "date": "2017-06-02",
+    "user_name": null,
+    "image": "images/1493145651404.jpg",
+    "message": "Does anyone have any recommendations for a 144hz monitor? Yeah, I know it's a meme, but I'm trying to get one because I enjoy playing games and it looks sooo smooth on 120+ hz.\r\n\r\nI'm not really sure what to look for, but I am trying to avoid anything with the title \"Gaming\" in it, as it usually suggests its a gimmicky marketing ploy."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 61,
+  "fields": {
+    "thread": 7,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "dont think you can get anything but gaming soykaf at 144hz."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 62,
+  "fields": {
+    "thread": 7,
+    "date": "2017-06-02",
+    "user_name": "Judge Fang",
+    "image": "",
+    "message": "I've got a Asus VG248QE and it works really well. Its not the best picture, but its the cheapest 144hz monitor I could find for under 250 bucks without soykaf reviews(also, don't trust amazon reviews). \"Gaming\" isn't explicitly in the title, but it will probably be in the description because I'm guessing that's their main market. That being said, it's still good for the price."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 63,
+  "fields": {
+    "thread": 7,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": ">I am trying to avoid anything with the title \"Gaming\" in it, as it usually suggests its a gimmicky marketing ploy.\r\nIt markets directly to your interests, and just because it's marketing doesn't mean it's somehow false. If you want a monitor geared towards gaming, you can be fairly certain it's going to have the word \"gaming\" somewhere in the marketing materials."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 64,
+  "fields": {
+    "thread": 7,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "I don't know, it seems a meme. From what I know, human vision can only perceive up to ~50hz, no difference beyond that."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 65,
+  "fields": {
+    "thread": 7,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": ">From what I know, human vision can only perceive up to ~50hz, no difference beyond that.\r\nThis is the real meme here. There is nothing to back this up."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 66,
+  "fields": {
+    "thread": 8,
+    "date": "2017-06-02",
+    "user_name": null,
+    "image": "images/1495484050324.gif",
+    "message": "Talk here about desktop applications, GUI frameworks, cool libraries, favorite languages, projects you're working on and all things desktop programming related!\r\n\r\nAlso, remember that the deep black gaze of the universe laughs at people who get annoyed over other people's preferences! Use honest and direct arguments like the big boy/girl you are!"
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 67,
+  "fields": {
+    "thread": 8,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "I want to modify the windows 10 taskbar functionality to add centering (not the fake way with empty folders). Does anyone know how I can go about doing this? I looked into the xml files for start menu/taskbar, but they're no good for this. I'm a bit of a noob when it comes to windows programming."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 68,
+  "fields": {
+    "thread": 8,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "why not use linux which is built for this kind of customization?\r\nwindows isn't, which usually means you have to do really hacky things to get stuff like that to work.\r\neven the windows 'multiple desktops' thing is buggy, it wouldn't let me open multiple insteances of the same application in different desktops for example."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 69,
+  "fields": {
+    "thread": 8,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "Let's say you're making a program to manage personal finances in Rust (or a to-do app, calculator, whatever you prefer). What would you use for the GUI in linux?\r\n\r\nI work basically with back end webdev and i have no clue on how to do this, even though i'm really into Rust."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 70,
+  "fields": {
+    "thread": 8,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "Have you come across ledger or hledger?\r\n\r\nThey're both programs for managing finances, and the user interface is just a text file containing a record of your transactions (hledger also has an interactive command-line interface to add new transactions). It's very simple but, because it's so simple, it's also really nice to use.\r\n\r\nAlways try the simple thing first."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 71,
+  "fields": {
+    "thread": 8,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "If I can program command line programs, how do I get over my fear and make a graphical one?"
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 72,
+  "fields": {
+    "thread": 8,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "Pick a GUI library, learn the basics and do your stuff, man. Ain't much different."
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 73,
+  "fields": {
+    "thread": 8,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "Make something simple with tkinter. Every library you learn after tkinter will be so much easier you won't worry about learning stuff ever again"
+  }
+},
+{
+  "model": "logchan.post",
+  "pk": 74,
+  "fields": {
+    "thread": 8,
+    "date": "2017-06-02",
+    "user_name": "",
+    "image": "",
+    "message": "I've never used Python before, but I suppose now would be a good time to learn. I quickly read about tkinter now: why not just use tcl/tk?"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 1,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 1,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 1,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 2,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 2,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 2,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 3,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 3,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 3,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 4,
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 4,
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 4,
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 5,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 5,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 5,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 6,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 6,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 6,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can add board",
+    "content_type": 7,
+    "codename": "add_board"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can change board",
+    "content_type": 7,
+    "codename": "change_board"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can delete board",
+    "content_type": 7,
+    "codename": "delete_board"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can add thread",
+    "content_type": 8,
+    "codename": "add_thread"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can change thread",
+    "content_type": 8,
+    "codename": "change_thread"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can delete thread",
+    "content_type": 8,
+    "codename": "delete_thread"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add post",
+    "content_type": 9,
+    "codename": "add_post"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change post",
+    "content_type": 9,
+    "codename": "change_post"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete post",
+    "content_type": 9,
+    "codename": "delete_post"
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 1,
+  "fields": {
+    "name": "Admin",
+    "permissions": [
+      1,
+      2,
+      3,
+      7,
+      8,
+      9,
+      4,
+      5,
+      6,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      19,
+      20,
+      21,
+      25,
+      26,
+      27,
+      22,
+      23,
+      24,
+      16,
+      17,
+      18
+    ]
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$24000$gAh6Pz4NF8GS$YlWKAVugSsX1BK7/WhZuKyVDLcRKqtcNVuupE8vjK9g=",
+    "last_login": "2017-06-02T13:14:19Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2017-06-02T13:03:03Z",
+    "groups": [
+      1
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2017-06-02T13:05:56.759Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "tech",
+    "object_repr": "tech",
+    "action_flag": 1,
+    "change_message": "Added."
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2017-06-02T13:06:31.304Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "music",
+    "object_repr": "music",
+    "action_flag": 2,
+    "change_message": "Changed name and description."
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2017-06-02T13:07:22.779Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "sec",
+    "object_repr": "sec",
+    "action_flag": 1,
+    "change_message": "Added."
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2017-06-02T13:07:40.126Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "lit",
+    "object_repr": "lit",
+    "action_flag": 2,
+    "change_message": "Changed name and description."
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2017-06-02T13:08:25.021Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "diy",
+    "object_repr": "diy",
+    "action_flag": 1,
+    "change_message": "Added."
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2017-06-02T13:10:25.824Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "1",
+    "object_repr": "Intel core i9",
+    "action_flag": 1,
+    "change_message": "Added."
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2017-06-02T13:11:52.168Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "1",
+    "object_repr": "What do you think about the new Intel processor?\r\nIt is worth it?",
+    "action_flag": 1,
+    "change_message": "Added."
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2017-06-02T13:13:29.893Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "1",
+    "object_repr": "What do you think about the new Intel processor?\r\nIt is worth it?",
+    "action_flag": 2,
+    "change_message": "Changed image."
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2017-06-02T13:24:16.632Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "1",
+    "object_repr": "I heard it has 18 cores and 36 threads, it's like a silicium monster",
+    "action_flag": 2,
+    "change_message": "Changed message."
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2017-06-02T13:26:50.714Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "1",
+    "object_repr": "Is it worth it?",
+    "action_flag": 2,
+    "change_message": "Changed message."
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2017-06-02T13:28:06.582Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "I heard it has 18 cores and 36 threads, it's like a silicium monster",
+    "action_flag": 1,
+    "change_message": "Added."
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2017-06-02T13:33:16.459Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "3",
+    "object_repr": "This little metal square cost $1,999.\r\nPlease, think about the number of pizza slice you can buy with this amount of money.",
+    "action_flag": 1,
+    "change_message": "Added."
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2017-06-02T13:34:42.784Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "3",
+    "object_repr": "This little metal square costs $1,999.\r\nPlease, think about the number of pizza slices you can buy with this amount of money.",
+    "action_flag": 2,
+    "change_message": "Changed message."
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2017-06-02T13:36:39.617Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "4",
+    "object_repr": "I'd rather buy a Xeon processor for this price.",
+    "action_flag": 1,
+    "change_message": "Added."
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2017-06-02T13:41:06.302Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "5",
+    "object_repr": "Xeons are not made for computer gaming though",
+    "action_flag": 1,
+    "change_message": "Added."
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2017-06-02T13:54:53.218Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "6",
+    "object_repr": "Yeah, I think 5.7GHz would be enough to play Minecraft",
+    "action_flag": 1,
+    "change_message": "Added."
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2017-06-02T14:02:25.137Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "2",
+    "object_repr": "Crypto Coin General",
+    "action_flag": 1,
+    "change_message": "Added."
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2017-06-02T14:02:49.898Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "7",
+    "object_repr": "Lets talk crypto coin!\r\nWith recent huge market movements and announcements from authorities (usa/japan) shaping a more positive future for crypto - is 2017 THE year!\r\n\r\n6 weeks ago crypto total marke",
+    "action_flag": 1,
+    "change_message": "Added."
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2017-06-02T14:03:30.354Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "1",
+    "object_repr": "Admin",
+    "action_flag": 1,
+    "change_message": "Added."
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2017-06-02T14:03:45.353Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "1",
+    "object_repr": "admin",
+    "action_flag": 2,
+    "change_message": "Changed groups."
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2017-06-02T14:21:35.558Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "3",
+    "object_repr": "Operating Systems",
+    "action_flag": 1,
+    "change_message": "Added."
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2017-06-02T14:22:40.392Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "20",
+    "object_repr": "What Operating System do/have you use/used and why?\r\n\r\nI've just started using Debian after using Arch for a few months after coming from Xubuntu.\r\n\r\nI enjoyed Xubuntu because it \"just werks\" and it w",
+    "action_flag": 1,
+    "change_message": "Added."
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2017-06-02T14:23:22.811Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "3",
+    "object_repr": "Operating Systems",
+    "action_flag": 2,
+    "change_message": "Changed board."
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 24,
+  "fields": {
+    "action_time": "2017-06-02T14:23:33.631Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "2",
+    "object_repr": "Crypto Coin General",
+    "action_flag": 2,
+    "change_message": "Changed board."
+  }
+}
+]
