@@ -92,8 +92,8 @@ function updatePostDisplay(posts){
     }
 
     const p = document.createElement('p');
-    const message = document.createTextNode(post.message);
-    p.appendChild(message);
+    const messageText = post.message.replace( /\n/g, "<br />" );
+    p.innerHTML = messageText;
     node.appendChild(p);
 
     postList.appendChild(node);

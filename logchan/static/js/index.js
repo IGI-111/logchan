@@ -34,15 +34,15 @@ function drawSpiral (ctx, x, y, width, height) {
   }
 
   ctx.lineWidth = 3
-  let startColor = new Color(0, 0, 0)
-  let endColor = new Color(200, 200, 200)
+  let startColor = new Color(200, 200, 200)
+  let endColor = new Color(0, 0, 0)
   ctx.strokeStyle = startColor.toString()
 
   let theta = 0.0
   let delta = 0.0
   let oldPoint = { x: center.x, y: center.y }
   let point, t
-  (function drawInvert () {
+  // (function drawInvert () {
     (function drawStep (step) {
       setTimeout(() => {
         const nextStep = step + 50
@@ -65,13 +65,13 @@ function drawSpiral (ctx, x, y, width, height) {
         }
       }, 5)
     })(0)
-    setTimeout(() => {
-      const buf = startColor
-      startColor = endColor
-      endColor = buf
-      drawInvert()
-    }, (stepCount / 50) * 5)
-  })()
+    // setTimeout(() => {
+    //   const buf = startColor
+    //   startColor = endColor
+    //   endColor = buf
+    //   drawInvert()
+    // }, (stepCount / 50) * 5)
+  // })()
 }
 
 document.addEventListener('DOMContentLoaded', init)
